@@ -20,18 +20,32 @@
 }
 
 .pizzaKmaLabel {
-  //z-index: 2;
-  padding: 3%;
-  position: absolute;
+text-align: center;
+  padding-top: 1.2%;
+  //padding: 3%;
+  position: fixed;
   top:0;
-  laft: 3%;
+  left: 3%;
   background-color: orange;
   color: white;
   font-family: Tahoma;
-  font-size: 14%;
+  font-size: 14pt;
   width:100px;
   height: 100px;
   display: block;
+}
+
+.pizzaKmaLabel::after {
+  content: "";
+  background: url("http://localhost:63342/JS-Pizza/Frontend//www/assets/images/discount.svg")no-repeat;
+  width:100%;
+  height: 11px;
+  position:absolute;
+  top: 100px;
+  left:0;
+  right:0;
+  transform: scaleY(-1);
+  display: inline-block;
 }
 
 .rightColumn {
