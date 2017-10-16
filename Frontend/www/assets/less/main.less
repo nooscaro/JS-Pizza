@@ -1,3 +1,44 @@
-@mainColor: blue;
-
+@mainColor: orange;
+@rightColumnWidth: 250px;
+@headerRowHeight: 50px;
 @import "pizza/pizza-card";
+
+.leftColumn {
+  padding-top: @headerRowHeight+5px;
+  position: relative;
+  padding-right: @rightColumnWidth;
+}
+
+.headerRow {
+  background-color: rgba(0,0,0,0.5);
+  //z-index: 1;
+  position: fixed;
+  top: 0;
+  right: @rightColumnWidth;
+  height: @headerRowHeight;
+  width: 100%;
+}
+
+.pizzaKmaLabel {
+  //z-index: 2;
+  padding: 3%;
+  position: absolute;
+  top:0;
+  laft: 3%;
+  background-color: orange;
+  color: white;
+  font-family: Tahoma;
+  font-size: 14%;
+  width:100px;
+  height: 100px;
+  display: block;
+}
+
+.rightColumn {
+  background-color: green;
+  position: fixed;
+  right:0;
+  top:0;
+  width: @rightColumnWidth;
+  height: 100%;
+}
