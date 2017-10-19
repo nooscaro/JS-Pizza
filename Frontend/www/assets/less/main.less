@@ -1,4 +1,4 @@
-@mainColor: orange;
+@mainColor: rgb(209,98,0);
 @rightColumnWidth: 300px;
 @headerRowHeight: 50px;
 @discountLabelHeight: 180px;
@@ -87,6 +87,7 @@ text-align: center;
 hr.orangeDivider {
   width: 79%;
   border: 1px solid rgb(209,98,0);
+
   align: center;
 
 }
@@ -105,6 +106,7 @@ hr.orangeDivider {
   height: @rightUpperBlockHeight;
   padding-top: 3%;
   padding-left: 2%;
+  box-shadow: 0 5px 5px -5px gray;
 }
 
 .heading {
@@ -133,9 +135,23 @@ hr.orangeDivider {
 
 .rightBottomBlock {
   position: fixed;
-
   bottom:0;
   width: 100%;
   max-width: @rightColumnWidth;
   background-color: white;
+  box-shadow: 0 -5px 5px -5px gray;
+}
+
+.btn-primary {
+  background-color: @mainColor;
+}
+
+.orderButton {
+  width: 100%;
+}
+
+.row {
+  padding: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
