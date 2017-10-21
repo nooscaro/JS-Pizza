@@ -1,8 +1,8 @@
-@mainColor: rgb(209,98,0);
+@mainColor: rgb(209, 98, 0);
 @rightColumnWidth: 300px;
 @headerRowHeight: 50px;
 @discountLabelHeight: 180px;
- @quantCircleSize:20px;
+@quantCircleSize: 20px;
 @rightUpperBlockHeight: 100px;
 @rightBottomBlockHeight: 150px;
 @labelOffset: 150px;
@@ -11,7 +11,7 @@
 
 body {
   font-family: Tahoma;
-  color:darkgray;
+  color: darkgray;
 }
 
 .leftColumn {
@@ -21,7 +21,7 @@ body {
 }
 
 .headerRow {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   //z-index: 1;
   position: fixed;
   top: 0;
@@ -35,45 +35,45 @@ body {
 }
 
 .pizzaKmaLabel {
-text-align: center;
+  text-align: center;
   padding-top: 1.2%;
   //padding: 3%;
   position: fixed;
-  top:0;
+  top: 0;
   left: 3%;
-  background-color: rgb(234,134,46);
-  border: 1px solid rgb(209,98,0);
+  background-color: rgb(234, 134, 46);
+  border: 1px solid rgb(209, 98, 0);
   border-bottom: none;
   color: white;
   //font-family: Tahoma;
   font-size: 14pt;
-  width:100px;
+  width: 100px;
   height: 101px;
   display: block;
 }
 
 .pizzaKmaLabel::after {
   content: "";
-  background: url("http://localhost:63342/JS-Pizza/Frontend//www/assets/images/discount.svg")no-repeat;
-  width:100px;
+  background: url("http://localhost:63342/JS-Pizza/Frontend//www/assets/images/discount.svg") no-repeat;
+  width: 100px;
   height: 11px;
-  position:absolute;
+  position: absolute;
   top: 98px;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   transform: scaleY(-1);
   display: inline-block;
 }
 
 .discountLabel {
-  background-color: rgb(234,134,46);
-  border: 1px solid rgb(209,98,0);
+  background-color: rgb(234, 134, 46);
+  border: 1px solid rgb(209, 98, 0);
   color: white;
   border-top: none;
-  position:fixed;
-  bottom:0;
+  position: fixed;
+  bottom: 0;
   left: 3%;
-  width:100px;
+  width: 100px;
   height: @discountLabelHeight;
   //font-family: Tahoma;
   font-size: 14pt;
@@ -83,39 +83,40 @@ text-align: center;
 
 .discountLabel::after {
   content: "";
-  background: url("http://localhost:63342/JS-Pizza/Frontend//www/assets/images/discount.svg")no-repeat;
+  background: url("http://localhost:63342/JS-Pizza/Frontend//www/assets/images/discount.svg") no-repeat;
   position: fixed;
   bottom: @discountLabelHeight;
   left: 3%;
-  width:100px;
-  height:11px;
+  width: 100px;
+  height: 11px;
 }
 
 hr.orangeDivider {
   width: 79%;
-  border: 1px solid rgb(209,98,0);
+  border: 1px solid rgb(209, 98, 0);
 
   align: center;
 
 }
 
 .rightColumn {
-  background-color: lightgray;
+  background-color: #f7f7f7;
   position: fixed;
-  right:0;
-  top:0;
+  right: 0;
+  top: 0;
   width: @rightColumnWidth;
   height: 100%;
   box-shadow: -5px 0 5px -2px gray;
-  overflow-y: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .rightUpperBlock {
   background-color: white;
   height: @rightUpperBlockHeight;
   //padding-top: 3%;
-  line-height:500%;
-  box-shadow: 0 5px 5px -5px gray;
+  line-height: 500%;
+  //box-shadow: 0 5px 5px -5px gray;
 
 }
 
@@ -128,7 +129,7 @@ hr.orangeDivider {
 
 .quantity {
 
-  background-color: rgb(209,98,0);
+  background-color: rgb(209, 98, 0);
 
   font-size: 10pt;
   color: white;
@@ -141,13 +142,13 @@ hr.orangeDivider {
 
 .rightBottomBlock {
   position: fixed;
-  bottom:0;
+  bottom: 0;
   width: 100%;
   padding-bottom: 1%;
   height: @rightBottomBlockHeight;
   max-width: @rightColumnWidth;
   background-color: white;
-  box-shadow: 0 -5px 5px -5px gray;
+  //box-shadow: 0 -5px 5px -5px gray;
 }
 
 .btn-primary {
@@ -164,7 +165,6 @@ hr.orangeDivider {
   padding-left: 1%;
   padding-right: 1%;
 }
-
 
 .headerRowFirstLine {
   height: 1.5%;
@@ -191,23 +191,23 @@ hr.orangeDivider {
 }
 
 nav-pills:active {
-  color:white;
+  color: white;
   background-color: @mainColor;
   border-radius: 10%;
 }
 
 .label-danger {
-  position:absolute;
+  position: absolute;
   top: -1%;
-  right:3%;
+  right: 3%;
   font-size: 12pt;
 }
 
 .label-success {
-  position:absolute;
+  position: absolute;
   top: -1%;
-  right:3%;
-font-size: 12pt;
+  right: 3%;
+  font-size: 12pt;
 }
 
 .footer {
@@ -216,7 +216,7 @@ font-size: 12pt;
   margin-right: @rightColumnWidth;
 }
 
-@media(max-width: 800px) {
+@media (max-width: 800px) {
   .logInClearfix {
     position: absolute;
     bottom: 0;
@@ -227,5 +227,86 @@ font-size: 12pt;
 .freeDelivery {
   font-size: medium;
 }
+
+.cartItem {
+  color: black;
+  position: relative;
+  font-size: 10pt;
+  border-bottom: 1px solid gray;
+  height: 130px;
+  padding: 1%;
+  padding-left: 10%;
+  line-height: 90%;
+  padding-top: 7%;
+
+  img {
+    max-height: 96px;
+    max-width: 96px;
+    position: absolute;
+    right: -48px;
+    top: 24px;
+
+    border-radius: 50%;
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 12px;
+    padding: 6px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .cancel {
+    color: @mainColor;
+    margin-left: 10px;
+  }
+
+  .label {
+    color: black;
+    font-size: 12pt;
+  }
+
+  .cartItemTitle {
+    color: @mainColor;
+    font-size: 14pt;
+
+  }
+
+  .diameter {
+    position: relative;
+    text-align: center;
+  }
+
+  .weight {
+    position: relative;
+    text-align: center;
+  }
+
+  .diameter::before {
+    content: "";
+    background: url("http://localhost:63342/JS-Pizza/Frontend/www/assets/images/size-icon.svg");
+    position: absolute;
+    left: 15px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .weight::before {
+    content: "";
+    background: url("http://localhost:63342/JS-Pizza/Frontend/www/assets/images/weight.svg");
+    position: absolute;
+    left: 15px;
+    top: 2px;
+    width: 9px;
+    height: 12px;
+  }
+
+}
+
+
 
 
