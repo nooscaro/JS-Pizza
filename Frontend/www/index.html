@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less"/>
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
@@ -22,29 +22,53 @@
         <span class="row heading h3 col-xs-4 col-xs-offset-4 text-center">Усі піци<span class="label quantity">3</span>
         </span>
     </div>
-    <ul class="nav nav-pills">
-        <li  role="presentation">Усі</li>
-        <li  role="presentation">М'ясні</li>
-        <li  role="presentation">З ананасами</li>
-        <li  role="presentation">З грибами</li>
-        <li  role="presentation">З морепродуктами</li>
-        <li  role="presentation">Вега</li>
-    </ul>
-
+    <div class="container">
+        <ul class="nav nav-pills col-md-9 col-md-offset-2 col-xs-12">
+            <li role="presentation">Усі</li>
+            <li role="presentation">М'ясні</li>
+            <li role="presentation">З ананасами</li>
+            <li role="presentation">З грибами</li>
+            <li role="presentation">З морепродуктами</li>
+            <li role="presentation">Вега</li>
+        </ul>
+    </div>
     <div class="row" id="pizza_list">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail pizza-card">
                 <img src="assets/images/pizza_1.jpg">
 
                 <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
                     <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
+                        <small>Subtitle</small>
                     </p>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class="heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class="heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="label label-danger">Нова</div>
             </div>
         </div>
@@ -54,13 +78,36 @@
                 <img src="assets/images/pizza_2.jpg">
 
                 <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
                     <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
+                        <small>Subtitle</small>
                     </p>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class=" heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class="heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="label label-success">Популяна</div>
             </div>
@@ -71,34 +118,60 @@
                 <img src="assets/images/pizza_3.jpg">
 
                 <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
                     <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
+                        <small>Subtitle</small>
                     </p>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class="heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class=" heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="headerRow">
         <div class="headerRowFirstLine">
-            <span class="heading col-lg-3 col-md-4 col-sm-10 phone">(044) 222 5 222</span>
+            <span class="heading col-lg-4 col-md-4 col-sm-10 phone">(044) 222 5 222</span>
             <span class="col-lg-3 col-md-4 hidden-sm hidden-xs">24 години/7 днів на тиждень</span>
-            <span class="col-lg-3 hidden-xs hidden-sm">Безкоштовна доставка піци</span>
-            <button class="btn btn-primary col-sm-2 col-offset-xs-10 logInClearfix">Увійти</button>
+            <span class="freeDelivery col-lg-4 hidden-xs hidden-sm">Безкоштовна доставка піци</span>
+            <button class="btn btn-primary col-sm-2 col-offset-xs-10 col-lg-1 logInClearfix">Увійти</button>
         </div>
         <div class="whiteDivider hidden-xs container"></div>
         <!--<hr class="whiteDivider">-->
         <div class="container-fluid fixedHeightDiv">
-            <span class="col-s-1 hidden-xs">Піца</span>
+            <span class="col-s-1 hidden-sm hidden-xs">Піца</span>
         </div>
     </div>
 
 </div>
 <div class="pizzaKmaLabel">PIZZA<br>KMA</div>
-<div class="discountLabel">ЦЬОГО ТИЖНЯ НА ВСЕ<hr class="orangeDivider">-20%</div>
+<div class="discountLabel">ЦЬОГО ТИЖНЯ НА ВСЕ
+    <hr class="orangeDivider">
+    -20%
+</div>
 
 <div class="container-fluid rightColumn">
     <div class="row rightUpperBlock">
@@ -110,8 +183,8 @@
     </div>
     <div class="rightBottomBlock row">
         <div class="row">
-            <span class="col-xs-8">Сума замовлення</span>
-            <span class="col-xs-4 heading">924 грн</span>
+            <span class="col-xs-7">Сума замовлення</span>
+            <span class="col-xs-5 heading">924 грн</span>
         </div>
         <button class="btn btn-primary orderButton">Замовити</button>
     </div>
@@ -119,10 +192,11 @@
 
 <footer class="footer">
     <p>НІТ-2017. Бакланова Віра, Прикладна математика Б2</p>
-    Доставка піци не здійснюється</footer>
+    Доставка піци не здійснюється
+</footer>
 
 <!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <!--Bootsrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

@@ -30,7 +30,7 @@ body {
   padding-left: @labelOffset;
   padding-right: @rightColumnWidth+5px;
   width: 100%;
-
+  height: auto;
   //we'll see about that later
 }
 
@@ -198,15 +198,16 @@ nav-pills:active {
 
 .label-danger {
   position:absolute;
-  top: -2%;
-  right:0;
+  top: -1%;
+  right:3%;
+  font-size: 12pt;
 }
 
 .label-success {
   position:absolute;
-  top: -2%;
-  right:0;
-
+  top: -1%;
+  right:3%;
+font-size: 12pt;
 }
 
 .footer {
@@ -214,3 +215,17 @@ nav-pills:active {
   text-align: center;
   margin-right: @rightColumnWidth;
 }
+
+@media(max-width: 800px) {
+  .logInClearfix {
+    position: absolute;
+    bottom: 0;
+    right: @rightColumnWidth;
+  }
+}
+
+.freeDelivery {
+  font-size: medium;
+}
+
+
