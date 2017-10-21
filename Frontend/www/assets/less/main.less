@@ -127,13 +127,8 @@ hr.orangeDivider {
 }
 
 .quantity {
-  width: @quantCircleSize;
-  //display: inline-block;
-  height: @quantCircleSize;
+
   background-color: rgb(209,98,0);
-  //padding: 3%;
-  //padding-top: 2%;
-  //padding-bottom: 2%;
 
   font-size: 10pt;
   color: white;
@@ -148,6 +143,7 @@ hr.orangeDivider {
   position: fixed;
   bottom:0;
   width: 100%;
+  padding-bottom: 1%;
   height: @rightBottomBlockHeight;
   max-width: @rightColumnWidth;
   background-color: white;
@@ -169,15 +165,10 @@ hr.orangeDivider {
   padding-right: 1%;
 }
 
-.whiteDivider {
-  border-bottom: 1px solid white;
-  //width:100%;
-
-
-}
 
 .headerRowFirstLine {
   height: 1.5%;
+  //border-bottom: 1px solid white;
   //border-bottom: 2px solid white;
 
 }
@@ -186,6 +177,40 @@ hr.orangeDivider {
   height: 1%;
   padding-bottom: 0.5%;
   font-size: 14pt;
+  border-top: 1px solid white;
   //line-height: 10;
 
+}
+
+.phone {
+  color: lightgray;
+}
+
+.nav-pills {
+  color: @mainColor;
+}
+
+nav-pills:active {
+  color:white;
+  background-color: @mainColor;
+  border-radius: 10%;
+}
+
+.label-danger {
+  position:absolute;
+  top: -2%;
+  right:0;
+}
+
+.label-success {
+  position:absolute;
+  top: -2%;
+  right:0;
+
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  text-align: center;
+  margin-right: @rightColumnWidth;
 }
