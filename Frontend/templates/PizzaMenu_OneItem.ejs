@@ -34,8 +34,37 @@ function getIngredientsArray(pizza) {
                 <%= getIngredientsArray(pizza).join(", ") %>
             </div>
         </div>
-
+        <%if(pizza.big_size!==null && pizza.small_size!==null) {%>
+            <div class="row size">
+                <div class="col-sm-6 small">
+                    <p class="diameter"><%=pizza.small_size.size%></p>
+                    <p class="weight"><%=pizza.small_size.weight%></p>
+                    <button class="btn btn-primary buy-small">Купити маленьку</button>
+                </div>
+                <div class="col-sm-6 big">
+                    <p class="diameter"><%=pizza.big_size.size%></p>
+                    <p class="weight"><%=pizza.big_size.weight%></p>
+                    <button class="btn btn-primary buy-big">Купити велику</button>
+                </div>
+            </div>
+        <%} else if(pizza.big_size!==null) {%>
+            <div class="row size">
+                <div class="col-xs-12 big">
+                    <p class="diameter"><%=pizza.big_size.size%></p>
+                    <p class="weight"><%=pizza.big_size.weight%></p>
+                    <button class="btn btn-primary buy-big">Купити велику</button>
+                </div>
+            </div>
+        <%} else {%>
+            <div class="row size">
+                <div class="col-xs-12 small">
+                    <p class="diameter"><%=pizza.small_size.size%></p>
+                    <p class="weight"><%=pizza.small_size.weight%></p>
+                    <button class="btn btn-primary buy-small">Купити маленьку</button>
+                </div>
+            </div>
+        <%}%>
         <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->
-        <button class="btn btn-primary buy-big">Купити велику</button>
+        <!--<button class="btn btn-primary buy-big">Купити велику</button>-->
     </div>
 </div>
