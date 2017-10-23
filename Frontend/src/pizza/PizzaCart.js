@@ -33,6 +33,7 @@ function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
 
+
     //Після видалення оновити відображення
     updateCart();
 }
@@ -63,7 +64,19 @@ function updateCart() {
 
         var $node = $(html_code);
 
-        $node.find(".plus").click(function(){
+        $node.find('.minus').click(function () {
+            if (cart_item.quantity > 1)
+                cart_item.quantity -= 1;
+            else
+                removeFromCart(cart_item);
+            updateCart();
+        });
+
+        $node.find('.cancel').click(function () {
+            removeFromCart(cart_item);
+        });
+
+        $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
 
