@@ -27,8 +27,13 @@ var pizza_info = [
             price: 169
         },
         is_new:true,
-        is_popular:true
-
+        is_popular:true,
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Meat: 1,
+            Pineapple: 2
+        }
     },
     {
         id:2,
@@ -51,7 +56,13 @@ var pizza_info = [
             size: 40,
             price: 199
         },
-        is_popular:true
+        is_popular:true,
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Meat: 1,
+            Mushroom: 3
+        }
     },
     {
         id:3,
@@ -73,6 +84,12 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 179
+        },
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Meat: 1,
+            Pineapple: 2
         }
     },
     {
@@ -95,6 +112,12 @@ var pizza_info = [
             weight: 790,
             size: 40,
             price: 169
+        },
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Meat: 1,
+            Mushroom: 3
         }
     },
     {
@@ -111,6 +134,11 @@ var pizza_info = [
             weight: 370,
             size: 30,
             price: 89
+        },
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Vegetarian: 5
         }
     },
     {
@@ -134,6 +162,13 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 180
+        },
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Meat: 1,
+            Pineapple: 2,
+            Mushroom: 3
         }
     },
     {
@@ -150,6 +185,11 @@ var pizza_info = [
             weight: 845,
             size: 40,
             price: 399
+        },
+        //ADDED FILTERS
+        filter :{
+            All: 0,
+            Seafood: 4
         }
     },
     {
@@ -171,6 +211,10 @@ var pizza_info = [
             weight: 700,
             size: 40,
             price: 299
+        },
+        filter :{
+            All: 0,
+            Seafood: 4
         }
     }
 ];
@@ -372,9 +416,37 @@ exports.PizzaSize = PizzaSize;
 var Templates = require('../Templates');
 var PizzaCart = require('./PizzaCart');
 var Pizza_List = require('../Pizza_List');
-
+// var Pizza_Manager = require('Pizza');
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
+// //ФІЛЬТРИ
+// var $all = $('#allFilter');
+// var $meat = $('#meatFilter');
+// var $pineapple = $('#pineappleFilter');
+// var $mushroom = $('#mushroomFilter');
+// var $sea = $('#seafoodFilter');
+// var $vegan = $('#veganFilter');
+//
+// $all.click(function () {
+//     showPizzaList($pizza_list);
+// });
+// $meat.click(function () {
+//     filterPizza(Pizza_Manager.PizzaFilter.Meat);
+//
+// });
+// $pineapple.click(function () {
+//     filterPizza(Pizza_Manager.PizzaFilter.Pineapple);
+// });
+// $mushroom.click(function () {
+//     filterPizza(Pizza_Manager.PizzaFilter.Mushroom);
+// });
+// $sea.click(function () {
+//     filterPizza(Pizza_Manager.PizzaFilter.Seafood);
+// });
+// $vegan.click(function () {
+//     filterPizza(Pizza_Manager.PizzaFilter.Vegetarian);
+// });
+
 
 function showPizzaList(list) {
     //Очищаємо старі піци в кошику
@@ -386,10 +458,10 @@ function showPizzaList(list) {
 
         var $node = $(html_code);
 
-        $node.find(".buy-big").click(function(){
+        $node.find(".buy-big").click(function () {
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
         });
-        $node.find(".buy-small").click(function(){
+        $node.find(".buy-small").click(function () {
             PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
         });
 
@@ -403,9 +475,11 @@ function filterPizza(filter) {
     //Масив куди потраплять піци які треба показати
     var pizza_shown = [];
 
-    Pizza_List.forEach(function(pizza){
+    Pizza_List.forEach(function (pizza) {
         //Якщо піка відповідає фільтру
-        //pizza_shown.push(pizza);
+        alert(pizza.filter[filter])
+        if (pizza.filter[filter])
+            pizza_shown.push(pizza);
 
         //TODO: зробити фільтри
     });
