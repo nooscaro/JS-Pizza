@@ -32,7 +32,7 @@ function getIngredientsArray(pizza) {
                 <%= getIngredientsArray(pizza).join(", ") %>
             </div>
         </div>
-        <% if(pizza.big_size !== null && pizza.small_size !== null) { %>
+        <% if(pizza["big_size"] && pizza["small_size"]) { %>
         <div class="row size">
             <div class="col-sm-6 small">
                 <p class="diameter"><%= pizza.small_size.size %></p>
@@ -51,7 +51,7 @@ function getIngredientsArray(pizza) {
                 <button class="btn btn-primary buy-big">Купити</button>
             </div>
         </div>
-        <% } else if(pizza.big_size !== null) { %>
+        <% } else if(pizza["big_size"]) { %>
         <div class="row size">
             <div class="col-xs-12 big">
                 <p class="diameter"><%= pizza.big_size.size %></p>
