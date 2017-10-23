@@ -16,6 +16,13 @@ var total = 0;
 var $cart = $("#cart");
 var $grandTotal = $('#grandTotal');
 
+var $clearCart = $('#clearYourOrder');
+$clearCart.click(function () {
+    Cart = [];
+    total=0;
+    updateCart();
+
+});
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
