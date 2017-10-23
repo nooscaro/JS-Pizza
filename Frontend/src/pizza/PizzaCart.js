@@ -11,9 +11,11 @@ var PizzaSize = {
 
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
-
+var total = 0;
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#cart");
+var $grandTotal = $('#grandTotal');
+
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
@@ -26,7 +28,7 @@ function addToCart(pizza, size) {
     var newItemStr = JSON.stringify(newItem.pizza)+'\n'+JSON.stringify(newItem.size);
     function checkForDouble(item) {
         var itemStr = JSON.stringify(item.pizza)+'\n'+JSON.stringify(item.size);
-        
+
         if(newItemStr.localeCompare(itemStr)==0){
             item.quantity+=1;
             doubles=true;
@@ -47,7 +49,7 @@ function addToCart(pizza, size) {
 
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
-    //TODO: треба зробити
+
     var sample = JSON.stringify(cart_item);
     function checkAndRemoveOneItem(item) {
         var str = JSON.stringify(item);
@@ -87,7 +89,7 @@ function updateCart() {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
         var $node = $(html_code);
-
+        // total+=cart_item.quantity*cart_item.pizza[size].price;
         $node.find('.minus').click(function () {
             if (cart_item.quantity > 1)
                 cart_item.quantity -= 1;
@@ -112,6 +114,7 @@ function updateCart() {
     }
 
     Cart.forEach(showOnePizzaInCart);
+    // $grandTotal.text(total+" грн.");
 
 }
 
