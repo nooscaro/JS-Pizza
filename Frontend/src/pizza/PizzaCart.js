@@ -32,7 +32,17 @@ function addToCart(pizza, size) {
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
-
+    var sample = JSON.stringify(cart_item);
+    alert(sample);
+    function checkAndRemoveOneItem(item) {
+        var str = JSON.stringify(item);
+        // alert(str+'\n'+sample);
+        if(sample.localeCompare(str)==0) {
+            var index = Cart.indexOf(item);
+            Cart.splice(index,1);
+        }
+    }
+    Cart.forEach(checkAndRemoveOneItem);
 
     //Після видалення оновити відображення
     updateCart();

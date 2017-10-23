@@ -59,7 +59,7 @@ var pizza_info = [
         title: "Міксовий поло",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'курка копчена'],
+            meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарелла'],
             pineapple: ['ананаси'],
             additional: ['кукурудза', 'петрушка', 'соус томатний']
@@ -81,7 +81,7 @@ var pizza_info = [
         title: "Сициліано",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'салямі'],
+            meat: ['шинка', 'салямі'],
             cheese: ['сир моцарелла'],
             mushroom: ['шампінйони'],
             additional: ['перець болгарський',  'соус томатний']
@@ -239,7 +239,17 @@ function addToCart(pizza, size) {
 function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
-
+    var sample = JSON.stringify(cart_item);
+    alert(sample);
+    function checkAndRemoveOneItem(item) {
+        var str = JSON.stringify(item);
+        // alert(str+'\n'+sample);
+        if(sample.localeCompare(str)==0) {
+            var index = Cart.indexOf(item);
+            Cart.splice(index,1);
+        }
+    }
+    Cart.forEach(checkAndRemoveOneItem);
 
     //Після видалення оновити відображення
     updateCart();
