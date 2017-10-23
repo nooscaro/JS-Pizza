@@ -224,14 +224,30 @@ var $cart = $("#cart");
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
-
-    //Приклад реалізації, можна робити будь-яким іншим способом
-    Cart.push({
+    var doubles = false;
+    var newItem = ({
         pizza: pizza,
         size: size,
-        quantity: 1
+        quantity:1
     });
-
+    var newItemStr = JSON.stringify(newItem.pizza)+'\n'+JSON.stringify(newItem.size);
+    function checkForDouble(item) {
+        var itemStr = JSON.stringify(item.pizza)+'\n'+JSON.stringify(item.size);
+        
+        if(newItemStr.localeCompare(itemStr)==0){
+            item.quantity+=1;
+            doubles=true;
+        }
+    }
+    Cart.forEach(checkForDouble);
+    //Приклад реалізації, можна робити будь-яким іншим способом
+    if(!doubles) {
+        Cart.push({
+            pizza: pizza,
+            size: size,
+            quantity: 1
+        });
+    }
     //Оновити вміст кошика на сторінці
     updateCart();
 }
@@ -240,10 +256,8 @@ function removeFromCart(cart_item) {
     //Видалити піцу з кошика
     //TODO: треба зробити
     var sample = JSON.stringify(cart_item);
-    alert(sample);
     function checkAndRemoveOneItem(item) {
         var str = JSON.stringify(item);
-        // alert(str+'\n'+sample);
         if(sample.localeCompare(str)==0) {
             var index = Cart.indexOf(item);
             Cart.splice(index,1);
