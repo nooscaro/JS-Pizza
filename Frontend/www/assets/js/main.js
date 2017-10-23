@@ -244,13 +244,10 @@ function addToCart(pizza, size) {
     Cart.forEach(checkForDouble);
     //Приклад реалізації, можна робити будь-яким іншим способом
     if(!doubles) {
-        Cart.push({
-            pizza: pizza,
-            size: size,
-            quantity: 1
-        });
+        Cart.push(newItem);
     }
     //Оновити вміст кошика на сторінці
+    total+=newItem.pizza[size].price;
     updateCart();
 }
 
@@ -262,6 +259,7 @@ function removeFromCart(cart_item) {
         var str = JSON.stringify(item);
         if(sample.localeCompare(str)==0) {
             var index = Cart.indexOf(item);
+            total-=item.quantity*item.pizza[item.size].price;
             Cart.splice(index,1);
         }
     }
@@ -298,8 +296,10 @@ function updateCart() {
         var $node = $(html_code);
         // total+=cart_item.quantity*cart_item.pizza[size].price;
         $node.find('.minus').click(function () {
-            if (cart_item.quantity > 1)
+            if (cart_item.quantity > 1) {
+                total-=cart_item.pizza[cart_item.size].price;
                 cart_item.quantity -= 1;
+            }
             else
                 removeFromCart(cart_item);
             updateCart();
@@ -312,7 +312,7 @@ function updateCart() {
         $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-
+            total+=cart_item.pizza[cart_item.size].price;
             //Оновлюємо відображення
             updateCart();
         });
@@ -321,7 +321,7 @@ function updateCart() {
     }
 
     Cart.forEach(showOnePizzaInCart);
-    // $grandTotal.text(total+" грн.");
+     $grandTotal.text(total+" грн.");
 
 }
 
