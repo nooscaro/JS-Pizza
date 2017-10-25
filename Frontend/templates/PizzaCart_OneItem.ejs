@@ -1,7 +1,7 @@
 
 
 <div class="row cartItem">
-    <p class="cartItemTitle"><%=pizza.title%>(<%=size%>)</p>
+    <p class="cartItemTitle"><%=pizza.title%>(<%=(size=="big_size")?"Велика" :"Мала"%>)</p>
     <div class="row">
         <div class="col-xs-3 diameter"><%=pizza[size].size%></div>
         <div class="col-xs-3 weight"><%=pizza[size].weight%></div>
