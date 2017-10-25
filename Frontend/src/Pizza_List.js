@@ -28,10 +28,13 @@ var pizza_info = [
         is_new:true,
         is_popular:true,
         //ADDED FILTERS
-        filter :{
-            All: 0,
+        PizzaFilter:{
+            All: 1,
             Meat: 1,
-            Pineapple: 2
+            Pineapple: 2,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -57,10 +60,13 @@ var pizza_info = [
         },
         is_popular:true,
         //ADDED FILTERS
-        filter :{
-            All: 0,
+        PizzaFilter:{
+            All: 1,
             Meat: 1,
-            Mushroom: 3
+            Pineapple: 0,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -85,10 +91,13 @@ var pizza_info = [
             price: 179
         },
         //ADDED FILTERS
-        filter :{
-            All: 0,
+        PizzaFilter:{
+            All: 1,
             Meat: 1,
-            Pineapple: 2
+            Pineapple: 1,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -113,10 +122,13 @@ var pizza_info = [
             price: 169
         },
         //ADDED FILTERS
-        filter :{
-            All: 0,
+        PizzaFilter:{
+            All: 1,
             Meat: 1,
-            Mushroom: 3
+            Pineapple: 0,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -135,9 +147,13 @@ var pizza_info = [
             price: 89
         },
         //ADDED FILTERS
-        filter :{
-            All: 0,
-            Vegetarian: 5
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 1
         }
     },
     {
@@ -163,11 +179,13 @@ var pizza_info = [
             price: 180
         },
         //ADDED FILTERS
-        filter :{
-            All: 0,
+        PizzaFilter:{
+            All: 1,
             Meat: 1,
-            Pineapple: 2,
-            Mushroom: 3
+            Pineapple: 1,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -186,9 +204,13 @@ var pizza_info = [
             price: 399
         },
         //ADDED FILTERS
-        filter :{
-            All: 0,
-            Seafood: 4
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 1,
+            Vegetarian: 0
         }
     },
     {
@@ -211,9 +233,13 @@ var pizza_info = [
             size: 40,
             price: 299
         },
-        filter :{
-            All: 0,
-            Seafood: 4
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 1,
+            Vegetarian: 0
         }
     }
 ];

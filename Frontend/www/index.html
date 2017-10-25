@@ -20,18 +20,18 @@
 
 
 <div class="container leftColumn">
-    <div class="row">
-        <span class="row heading h3 col-xs-4 col-xs-offset-4 text-center">Усі піци<span class="label quantity">8</span>
-        </span>
+    <div class="row row heading h3 col-xs-4 col-xs-offset-4 text-center">
+        <span class="" id="catName">Усі піци</span>
+        <span class="label quantity" id="pizzaCatQuant">8</span>
     </div>
     <div class="container">
         <ul class="nav nav-pills col-md-9 col-md-offset-2 col-xs-12">
-            <li role="presentation"><button id="allFilter">Усі</button></li>
-            <li role="presentation"><button id="meatFilter">М'ясні</button></li>
-            <li role="presentation"><button id="pineappleFilter">З ананасами</button></li>
-            <li role="presentation"><button id="mushroomFilter">З грибами</button></li>
-            <li role="presentation"><button id="seafoodFilter">З морепродуктами</button></li>
-            <li role="presentation"><button id ="veganFilter">Вега</button></li>
+            <li role="presentation" id="allFilter"><a data-toggle="pill" href="#all" >Усі</a></li>
+            <li role="presentation" id="meatFilter"><a data-toggle="pill" href="#meat" >М'ясні</a></li>
+            <li role="presentation" id="pineappleFilter"><a data-toggle="pill" href="#pineapple" >З ананасами</a></li>
+            <li role="presentation" id="mushroomFilter"><a data-toggle="pill" href="#mushroom" >З грибами</a></li>
+            <li role="presentation" id="seafoodFilter"><a data-toggle="pill" href="#seafood" >З морепродуктами</a></li>
+            <li role="presentation" id ="veganFilter"><a data-toggle="pill" href="#vegan" >Вега</a></li>
         </ul>
     </div>
     <div class="row" id="pizza_list">

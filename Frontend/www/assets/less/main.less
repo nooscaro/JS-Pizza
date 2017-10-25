@@ -193,21 +193,24 @@ hr.orangeDivider {
 
 .nav-pills {
   color: @mainColor;
-  button {
-    background: none;
-    border: none;
+
+  a {
+    color: @mainColor;
+    .active {
+      background-color: @mainColor;
+      color: white;
+    }
   }
-  button:active {
-    background: @mainColor;
+
+  .active {
+    background-color: @mainColor;
     color: white;
-    border-radius: 3px;
   }
 }
 
-nav-pills:active {
-  color: white;
+.active {
   background-color: @mainColor;
-  border-radius: 10%;
+  color: white;
 }
 
 .label-danger {
@@ -326,3 +329,12 @@ nav-pills:active {
   padding-top: @rightUpperBlockHeight;
 }
 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: @mainColor;
+  color: white;
+  //border-radius: 20px;
+}
+
+.nav-pills>li>a  {
+  border-radius: 10px;
+}
