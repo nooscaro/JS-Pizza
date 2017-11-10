@@ -22,7 +22,7 @@ body {
 
 .headerRow {
   background-color: rgba(0, 0, 0, 0.8);
-  //z-index: 1;
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -50,6 +50,7 @@ body {
   width: 100px;
   height: 101px;
   display: block;
+  z-index: 2;
 }
 
 .pizzaKmaLabel::after {
@@ -100,6 +101,7 @@ hr.orangeDivider {
 }
 
 .rightColumn {
+  z-index: 2;
   background-color: #f7f7f7;
   position: fixed;
   right: 0;
@@ -193,7 +195,7 @@ hr.orangeDivider {
 
 .nav-pills {
   color: @mainColor;
-
+  border-radius: 3px;
   a {
     color: @mainColor;
     .active {

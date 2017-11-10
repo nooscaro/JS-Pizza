@@ -1,7 +1,191 @@
 <% include common/header.ejs %>
 
-<div class="">
-    Main Page Content
-</div>
+<!--<div class="">-->
+    <!--Main Page Content-->
+<!--</div>-->
 
+
+<div class="container leftColumn">
+    <div class="row row heading h3 col-xs-4 col-xs-offset-4 text-center">
+        <span class="" id="catName">Усі піци</span>
+        <span class="label quantity" id="pizzaCatQuant">8</span>
+    </div>
+    <div class="container">
+        <ul class="nav nav-pills col-md-9 col-md-offset-2 col-xs-12">
+            <li role="presentation" id="allFilter"><a data-toggle="pill" href="#all" >Усі</a></li>
+            <li role="presentation" id="meatFilter"><a data-toggle="pill" href="#meat" >М'ясні</a></li>
+            <li role="presentation" id="pineappleFilter"><a data-toggle="pill" href="#pineapple" >З ананасами</a></li>
+            <li role="presentation" id="mushroomFilter"><a data-toggle="pill" href="#mushroom" >З грибами</a></li>
+            <li role="presentation" id="seafoodFilter"><a data-toggle="pill" href="#seafood" >З морепродуктами</a></li>
+            <li role="presentation" id ="veganFilter"><a data-toggle="pill" href="#vegan" >Вега</a></li>
+        </ul>
+    </div>
+    <div class="row" id="pizza_list">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail pizza-card">
+                <img src="assets/images/pizza_1.jpg">
+
+                <div class="caption"><h3>Thumbnail label</h3>
+                    <p>
+                        <small>Subtitle</small>
+                    </p>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class="heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class="heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="label label-danger">Нова</div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail pizza-card">
+                <img src="assets/images/pizza_2.jpg">
+
+                <div class="caption"><h3>Thumbnail label</h3>
+                    <p>
+                        <small>Subtitle</small>
+                    </p>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class=" heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class="heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="label label-success">Популяна</div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail pizza-card">
+                <img src="assets/images/pizza_3.jpg">
+
+                <div class="caption"><h3>Thumbnail label</h3>
+                    <p>
+                        <small>Subtitle</small>
+                    </p>
+
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
+                        at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <div class="row size">
+                        <div class="col-sm-6">
+                            <p class="diameter">30</p>
+                            <p class="weight">430</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="diameter">40</p>
+                            <p class="weight">700</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="price col-sm-6">
+                            <p class="heading">169
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                        <div class="price col-sm-6">
+                            <p class=" heading">69
+                            <div style="font-size:14px;">грн.</div>
+                            </p>
+                            <p><a href="#" class="btn btn-primary">Купити</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="container-fluid rightColumn">
+    <div id="cart">
+        <div class="row cartItem">
+            <p class="cartItemTitle">Піцца (Мала)</p>
+            <div class="row">
+                <div class="col-xs-3 diameter">30</div>
+                <div class="col-xs-3 weight">430</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 label">69 грн.</div>
+                <button class="col-xs-2 btn btn-danger btn-circle">
+                    <i class="glyphiceon glyphicon-minus"></i>
+                </button>
+                <div class="col-xs-1 label">3</div>
+                <button class="col-xs-2 btn btn-success btn-circle">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <button class="col-xs-2 btn btn-default btn-circle cancel">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                <img src="assets/images/pizza_3.jpg">
+            </div>
+        </div>
+    </div>
+
+    <div class="rightBottomBlock row">
+        <div class="row">
+            <span class="col-xs-7">Сума замовлення</span>
+            <span class="col-xs-5 heading" id="grandTotal">924 грн</span>
+        </div>
+        <button class="btn btn-primary orderButton">Замовити</button>
+    </div>
+    <div class="row rightUpperBlock">
+        <div class="col-xs-4.col-xs-1.col-xs-7">
+            <span class="heading">Замовлення</span>
+            <span class="label quantity" id="numItemsInTheCart">3</span>
+            <button id="clearYourOrder">Очистити замовлення</button>
+        </div>
+    </div>
+</div>
+    <div class="pizzaKmaLabel">PIZZA<br>KMA</div>
+    <footer class="footer">
+        <p>НІТ-2017. Бакланова Віра, Прикладна математика Б2</p>
+        Доставка піци не здійснюється
+    </footer>
 <% include common/footer.ejs %>
