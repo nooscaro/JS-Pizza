@@ -149,6 +149,38 @@ function initialize() {
     });
 
 
+    function calculateRoute(A_latlng, B_latlng, callback) {
+        var directionService = new google.maps.DirectionsService();
+        directionService.route({
+            origin: A_latlng,
+            destination: B_latlng,
+            travelMode: google.maps.TravelMode["DRIVING"]
+        }, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                var leg = response.routes[0].legs[0];
+                callback(null, {
+                    duration: leg.duration.text
+                });
+            } else {
+                callback(new Error("Can'	not	find	direction"));
+            }
+        });
+    }
+
+
+    function geocodeAddress(adress, callback) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address': address}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK && results[0]) {
+                var coordinates = results[0].geometry.location;
+                callback(null, coordinates);
+            } else {
+                callback(new Error("Can	not	find	the	adress"));
+            }
+        });
+    }
+
+
     function geocodeLatLng(latlng, callback) {
 //Модуль за роботу з адресою
         var geocoder = new google.maps.Geocoder();
@@ -178,11 +210,44 @@ function initialize() {
                         map: map,
                         icon: "assets/images/home-icon.png"
                     });
+                    calculateRoute(point,coordinates,function (err, time) {
+                        if(err)
+                            console.log(err);
+                        else {
+                            console.log(time.duration);
+                            $('.timeAprox').text(time.duration);
+                        }
+                    });
                 }
             });
 
 
         });
+
+    $('#address').change(function () {
+        var adr = $('#address').val();
+        alert(adr);
+        geocodeAddress(adr, function (err, coord) {
+            if (err)
+                alert("Couldn't find the address");
+            else {
+                calculateRoute(point, coord, function (err, duration) {
+                    if (err)
+                        console.log(err);
+                    else{
+                        $('.timeAprox').text(duration);
+                        $('.summaryAddress').text(adr);
+                        homeMarker.setMap(null);
+                        homeMarker = new google.maps.Marker({
+                            position: coord,
+                            map: map,
+                            icon: "assets/images/home-icon.png"
+                        });
+                        }
+                });
+            }
+        })
+    });
 }
 
 //Карта створена і показана
