@@ -151,6 +151,8 @@ function initialize() {
 
     function calculateRoute(A_latlng, B_latlng, callback) {
         var directionService = new google.maps.DirectionsService();
+        var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true});
+        directionsDisplay.setMap(map);
         directionService.route({
             origin: A_latlng,
             destination: B_latlng,
@@ -158,6 +160,10 @@ function initialize() {
         }, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 var leg = response.routes[0].legs[0];
+                directionsDisplay.setMap(null);
+                directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true, map:map});
+                directionsDisplay.setDirections(response);
+
                 callback(null, {
                     duration: leg.duration.text
                 });
