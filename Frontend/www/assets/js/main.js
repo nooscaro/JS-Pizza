@@ -70,7 +70,7 @@ exports.PizzaCart_OneItem_Order = ejs.compile("\r\n\r\n<div class=\"row cartItem
  * Created by chaika on 25.01.16.
  */
 
-$(function(){
+$(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
@@ -78,9 +78,9 @@ $(function(){
 
     var API = require('./API.js');
     API.getPizzaList(function (err, list) {
-        if(err)
+        if (err)
             alert(err);
-        else{
+        else {
             Pizza_List = list;
             PizzaCart.initialiseCart();
             PizzaMenu.initialiseMenu();
@@ -120,8 +120,8 @@ $(function(){
 
     });
     $('.orderButton').click(function () {
-        window.location= "order.html";
-       $('#cart').find('.plus').hide();
+        window.location = "order.html";
+        $('#cart').find('.plus').hide();
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
@@ -129,7 +129,7 @@ $(function(){
 
 });
 
-function	initialize() {
+function initialize() {
 //Тут починаємо працювати з картою
 
     var mapProp = {
@@ -139,20 +139,34 @@ function	initialize() {
     var html_element = document.getElementById("map");
     var map = new google.maps.Map(html_element, mapProp);
     // ІКОНКА ПІЦИ НА КАРТІ
-    var point	=	new	google.maps.LatLng(50.464379,30.519131);
+    var point = new google.maps.LatLng(50.464379, 30.519131);
 
-    // var point	=	new	google.maps.LatLng(50.464379,30.519131);
-    var marker	=	new	google.maps.Marker({
-        position:	point,
-        map:	map,
-        icon:	"assets/images/map-icon.png"
+    var homeMarker = new google.maps.Marker();
+    var marker = new google.maps.Marker({
+        position: point,
+        map: map,
+        icon: "assets/images/map-icon.png"
     });
+
+    google.maps.event.addListener(map,
+        'click', function (me) {
+            var coordinates = me.latLng;
+            homeMarker.setMap(null);
+            // marker.setMap(null);
+             homeMarker = new google.maps.Marker({
+                position: coordinates,
+                map:map,
+                icon:"assets/images/home-icon.png"
+            });
+
+        });
 }
+
 //Карта створена і показана
 
 
 //Коли сторінка завантажилась
-    google.maps.event.addDomListener(window,	 'load',	initialize);
+google.maps.event.addDomListener(window, 'load', initialize);
 },{"./API.js":1,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
