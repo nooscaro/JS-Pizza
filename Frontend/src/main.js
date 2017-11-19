@@ -72,7 +72,13 @@ function initialize() {
     var map = new google.maps.Map(html_element, mapProp);
     // ІКОНКА ПІЦИ НА КАРТІ
     var point = new google.maps.LatLng(50.464379, 30.519131);
-    var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers:true, map:map});
+    var directionsDisplay = new google.maps.DirectionsRenderer({
+        suppressMarkers: true,
+        map: map,
+        polylineOptions: {
+            strokeColor: "orange"
+        }
+    });
 
     var homeMarker = new google.maps.Marker();
     var marker = new google.maps.Marker({
@@ -147,8 +153,8 @@ function initialize() {
                         map: map,
                         icon: "assets/images/home-icon.png"
                     });
-                    calculateRoute(point,coordinates,function (err, time) {
-                        if(err)
+                    calculateRoute(point, coordinates, function (err, time) {
+                        if (err)
                             console.log(err);
                         else {
                             console.log(time.duration);
@@ -162,7 +168,7 @@ function initialize() {
         });
 
     $('#address').change(function () {
-        var adr =(String)( $('#address').val());
+        var adr = (String)($('#address').val());
         alert(adr);
         geocodeAddress(adr, function (err, coord) {
             if (err)
@@ -171,7 +177,7 @@ function initialize() {
                 calculateRoute(point, coord, function (err, duration) {
                     if (err)
                         console.log(err);
-                    else{
+                    else {
                         console.log(duration);
                         $('.timeAprox').text(duration.duration);
                         $('.summaryAddress').text(adr);
@@ -181,7 +187,7 @@ function initialize() {
                             map: map,
                             icon: "assets/images/home-icon.png"
                         });
-                        }
+                    }
                 });
             }
         })
