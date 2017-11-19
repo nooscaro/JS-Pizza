@@ -168,7 +168,7 @@ function initialize() {
     }
 
 
-    function geocodeAddress(adress, callback) {
+    function geocodeAddress(address, callback) {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'address': address}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK && results[0]) {
@@ -225,7 +225,7 @@ function initialize() {
         });
 
     $('#address').change(function () {
-        var adr = $('#address').val();
+        var adr =(String)( $('#address').val());
         alert(adr);
         geocodeAddress(adr, function (err, coord) {
             if (err)
@@ -235,7 +235,8 @@ function initialize() {
                     if (err)
                         console.log(err);
                     else{
-                        $('.timeAprox').text(duration);
+                        console.log(duration);
+                        $('.timeAprox').text(duration.duration);
                         $('.summaryAddress').text(adr);
                         homeMarker.setMap(null);
                         homeMarker = new google.maps.Marker({
