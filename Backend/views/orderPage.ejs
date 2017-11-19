@@ -1,4 +1,10 @@
 <% include common/header.ejs %>
+
+
+<!--GOOGLE MAPS API-->
+<script	type="text/javascript"
+           src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4XXk2U58wkWu9qmCI96ZL6leduuFtgls">
+</script>
 <div class="container leftColumn  orderPageContent">
     <p class="heading row">1. Контактні дані</p>
     <div class="row ">
@@ -37,8 +43,9 @@
                 </p>
             </div>
         </div>
-        <button class="col-xs-1 col-xs-offset-11 btn btn-primary orderNextButton">Далі</button>
+        <button class="col-xs-3 col-xs-offset-9 col-sm-1 col-sm-offset-11 btn btn-primary orderNextButton">Далі</button>
     </div>
+    <div class="container-fluid" id="map"></div>
 
 </div>
 
