@@ -172,6 +172,7 @@ function initialize() {
                     homeMarker.setMap(null);
                     // console.log(adress);
                     $('#address').val(adress);
+                    $('.summaryAddress').text(adress);
                     homeMarker = new google.maps.Marker({
                         position: coordinates,
                         map: map,
