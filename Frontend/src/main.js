@@ -54,9 +54,10 @@ $(function(){
     });
     $('.orderButton').click(function () {
         window.location= "order.html";
+       $('#cart').find('.plus').hide();
     });
     $('.backToMainPage').click(function () {
-        window.location = "index.html";
+        window.location = "/";
     });
 
 });

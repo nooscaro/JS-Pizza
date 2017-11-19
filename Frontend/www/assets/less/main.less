@@ -18,6 +18,7 @@ body {
   padding-top: @headerRowHeight+5px;
   position: relative;
   padding-right: @rightColumnWidth;
+
 }
 
 .headerRow {
@@ -74,7 +75,7 @@ body {
   position: fixed;
   bottom: 0;
   left: 3%;
-  width: 100px;
+  width: 98px;
   height: @discountLabelHeight;
   //font-family: Tahoma;
   font-size: 14pt;
@@ -232,9 +233,9 @@ hr.orangeDivider {
   font-size: 12pt;
 }
 
-body{
-  position: relative;
-}
+//body{
+//  position: relative;
+//}
 
 .footer {
   border-top: 1px solid lightgray;
@@ -244,7 +245,7 @@ body{
   bottom: 0;
   left: 0;
   padding-right: @rightColumnWidth;
-  width:100%;
+  width: 100%;
 }
 
 @media (max-width: 800px) {
@@ -338,24 +339,55 @@ body{
 
 }
 
-
 #cart {
   padding-top: @rightUpperBlockHeight;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
   background-color: @mainColor;
   color: white;
   //border-radius: 20px;
 }
 
-.nav-pills>li>a  {
+.nav-pills > li > a {
   border-radius: 10px;
 }
 
-
-
 .backToMainPage {
   width: 100%;
-  height: 100%;
+  //height: 50%;
+}
+
+.orderPageContent {
+  padding-top: @headerRowHeight+30px;
+  color: black;
+  input {
+    border-radius: 3px;
+    padding: 1%;
+    border: solid 0.5px lightgray;
+    width: 90%;
+  }
+  .bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    margin-top: -1%;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+  }
+  .bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding: 3%;
+    //line-height: 60%;
+  }
+  .bs-callout p:last-child {
+    margin-bottom: 0;
+  }
+  .bs-callout-warning {
+    border-left-color: #f0ad4e;
+  }
+  .bs-callout-warning h4 {
+    color: #f0ad4e;
+  }
 }
