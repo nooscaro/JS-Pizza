@@ -10,7 +10,7 @@ var pizza_info = [
         type: 'М’ясна піца',
         content: {
             meat: ['балик', 'салямі'],
-            chicken: ['куриця'],
+            chicken: ['курка'],
             cheese: ['сир моцарелла', 'сир рокфорд'],
             pineapple: ['ананаси'],
             additional: ['томатна паста', 'петрушка']
@@ -26,8 +26,16 @@ var pizza_info = [
             price: 169
         },
         is_new:true,
-        is_popular:true
-
+        is_popular:true,
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 1,
+            Pineapple: 2,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 0
+        }
     },
     {
         id:2,
@@ -50,7 +58,16 @@ var pizza_info = [
             size: 40,
             price: 199
         },
-        is_popular:true
+        is_popular:true,
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 1,
+            Pineapple: 0,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
+        }
     },
     {
         id:3,
@@ -58,7 +75,7 @@ var pizza_info = [
         title: "Міксовий поло",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'куриця копчена'],
+            meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарелла'],
             pineapple: ['ананаси'],
             additional: ['кукурудза', 'петрушка', 'соус томатний']
@@ -72,6 +89,15 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 179
+        },
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 1,
+            Pineapple: 1,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -80,7 +106,7 @@ var pizza_info = [
         title: "Сициліано",
         type: 'М’ясна піца',
         content: {
-            meat: ['вітчина', 'салямі'],
+            meat: ['шинка', 'салямі'],
             cheese: ['сир моцарелла'],
             mushroom: ['шампінйони'],
             additional: ['перець болгарський',  'соус томатний']
@@ -94,6 +120,15 @@ var pizza_info = [
             weight: 790,
             size: 40,
             price: 169
+        },
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 1,
+            Pineapple: 0,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -110,6 +145,15 @@ var pizza_info = [
             weight: 370,
             size: 30,
             price: 89
+        },
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 0,
+            Vegetarian: 1
         }
     },
     {
@@ -133,6 +177,15 @@ var pizza_info = [
             weight: 780,
             size: 40,
             price: 180
+        },
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 1,
+            Pineapple: 1,
+            Mushroom: 1,
+            Seafood: 0,
+            Vegetarian: 0
         }
     },
     {
@@ -149,6 +202,15 @@ var pizza_info = [
             weight: 845,
             size: 40,
             price: 399
+        },
+        //ADDED FILTERS
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 1,
+            Vegetarian: 0
         }
     },
     {
@@ -170,6 +232,14 @@ var pizza_info = [
             weight: 700,
             size: 40,
             price: 299
+        },
+        PizzaFilter:{
+            All: 1,
+            Meat: 0,
+            Pineapple: 0,
+            Mushroom: 0,
+            Seafood: 1,
+            Vegetarian: 0
         }
     }
 ];
