@@ -87,7 +87,12 @@ $(function(){
 
         }
     });
-
+    $('.orderButton').click(function () {
+        window.location= "order.html";
+    });
+    $('.backToMainPage').click(function () {
+        window.location = "index.html";
+    });
 
     $('#meatFilter').click(function () {
         $pizza_cat_name.text("М'ясні піци");
@@ -121,12 +126,6 @@ $(function(){
 
     });
 
-    $('.orderButton').click(function () {
-       window.location= "order.html";
-    });
-    $('.backToMainPage').click(function () {
-       window.location = "index.html";
-    });
 
 });
 },{"./API.js":1,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){

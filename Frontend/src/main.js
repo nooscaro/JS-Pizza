@@ -52,6 +52,11 @@ $(function(){
         // this.addClass('.active');
 
     });
-
+    $('.orderButton').click(function () {
+        window.location= "order.html";
+    });
+    $('.backToMainPage').click(function () {
+        window.location = "index.html";
+    });
 
 });
