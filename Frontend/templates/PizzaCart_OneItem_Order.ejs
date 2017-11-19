@@ -1,0 +1,23 @@
+
+
+<div class="row cartItem">
+    <p class="cartItemTitle"><%=pizza.title%>(<%=(size=="big_size")?"Велика" :"Мала"%>)</p>
+    <div class="row">
+        <div class="col-xs-3 diameter"><%=pizza[size].size%></div>
+        <div class="col-xs-3 weight"><%=pizza[size].weight%></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 label"><%=(pizza[size].price*quantity)%> грн.</div>
+        <!--<button class="col-xs-2 btn btn-danger btn-circle minus">-->
+            <!--<i class="glyphiceon glyphicon-minus"></i>-->
+        <!--</button>-->
+        <div class="col-xs-2 label"><%=quantity%></div>
+        <!--<button class="col-xs-2 btn btn-success btn-circle plus">-->
+            <!--<i class="glyphicon glyphicon-plus"></i>-->
+        <!--</button>-->
+        <!--<button class="col-xs-2 btn btn-default btn-circle cancel">-->
+            <!--<i class="glyphicon glyphicon-remove"></i>-->
+        <!--</button>-->
+        <img src="<%= pizza.icon %>">
+    </div>
+</div>

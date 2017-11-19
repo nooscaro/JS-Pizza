@@ -15,13 +15,12 @@ API.getPizzaList(function (error, list) {
         alert("Something went wrong");
     }  else {
         Pizza_List = list;
-        alert(Pizza_List);
         showPizzaList(Pizza_List);
     }
 });
 
 
-// var Pizza_Manager = require('Pizza');
+
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
 var $pizza_cat_quant = $('#pizzaCatQuant');

@@ -1,0 +1,49 @@
+<% include common/header.ejs %>
+
+
+<div class="container-fluid rightColumn">
+<div id="cart">
+    <div class="row cartItem">
+        <p class="cartItemTitle">Піцца (Мала)</p>
+        <div class="row">
+            <div class="col-xs-3 diameter">30</div>
+            <div class="col-xs-3 weight">430</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 label">69 грн.</div>
+            <button class="col-xs-2 btn btn-danger btn-circle">
+                <i class="glyphiceon glyphicon-minus"></i>
+            </button>
+            <div class="col-xs-1 label">3</div>
+            <button class="col-xs-2 btn btn-success btn-circle">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+            <button class="col-xs-2 btn btn-default btn-circle cancel">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+            <img src="assets/images/pizza_3.jpg">
+        </div>
+    </div>
+</div>
+
+<div class="rightBottomBlock row">
+    <div class="row">
+        <span class="col-xs-7">Сума замовлення</span>
+        <span class="col-xs-5 heading" id="grandTotal">924 грн</span>
+    </div>
+    <button class="btn btn-primary orderButton">Замовити</button>
+</div>
+<div class="row rightUpperBlock">
+    <div class="col-xs-4.col-xs-1.col-xs-7">
+        <span class="heading">Замовлення</span>
+        <span class="label quantity" id="numItemsInTheCart">3</span>
+        <button id="clearYourOrder">Очистити замовлення</button>
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+    <p>НІТ-2017. Бакланова Віра, Прикладна математика Б2</p>
+    Доставка піци не здійснюється
+</footer>
+<% include common/footer.ejs %>
