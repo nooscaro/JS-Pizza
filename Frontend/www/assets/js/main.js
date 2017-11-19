@@ -148,16 +148,38 @@ function initialize() {
         icon: "assets/images/map-icon.png"
     });
 
+
+    function geocodeLatLng(latlng, callback) {
+//Модуль за роботу з адресою
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'location': latlng}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK && results[1]) {
+                var adress = results[1].formatted_address;
+                callback(null, adress);
+            } else {
+                callback(new Error("Can't	find	adress"));
+            }
+        });
+    }
+
     google.maps.event.addListener(map,
         'click', function (me) {
             var coordinates = me.latLng;
-            homeMarker.setMap(null);
-            // marker.setMap(null);
-             homeMarker = new google.maps.Marker({
-                position: coordinates,
-                map:map,
-                icon:"assets/images/home-icon.png"
+            geocodeLatLng(coordinates, function (err, adress) {
+                if (err)
+                    console.log(err);
+                else {
+                    homeMarker.setMap(null);
+                    // console.log(adress);
+                    $('#address').val(adress);
+                    homeMarker = new google.maps.Marker({
+                        position: coordinates,
+                        map: map,
+                        icon: "assets/images/home-icon.png"
+                    });
+                }
             });
+
 
         });
 }
