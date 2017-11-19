@@ -89,10 +89,6 @@ $(function(){
     });
 
 
-
-
-
-
     $('#meatFilter').click(function () {
         $pizza_cat_name.text("М'ясні піци");
         filterPizza("Meat");
@@ -125,6 +121,12 @@ $(function(){
 
     });
 
+    $('.orderButton').click(function () {
+       window.location= "order.html";
+    });
+    $('.backToMainPage').click(function () {
+       window.location = "index.html";
+    });
 
 });
 },{"./API.js":1,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){
@@ -156,20 +158,6 @@ $clearCart.click(function () {
 //Кількість піц у кошику
 var $numPizzas = $('#numItemsInTheCart');
 
-    $('.orderButton').click(function () {
-
-        window.location="order.html";
-        $cart.find('.plus').hide();
-        $cart.find('.minus').hide();
-        $cart.find('.cancel').hide();
-        // $cart.html("");
-        // Cart.forEach(function (item) {
-        //     var html = Templates.PizzaCart_OneItem_Order(item);
-        //     $cart.append(html);
-        // });
-
-
-    });
 
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
@@ -235,7 +223,7 @@ function getPizzaInCart() {
     return Cart;
 }
 
-function updateCart(template) {
+function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
@@ -243,9 +231,8 @@ function updateCart(template) {
     $cart.html("");
 
     //Онволення однієї піци
-    function showOnePizzaInCart(cart_item, template) {
+    function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
-
 
         var $node = $(html_code);
         // total+=cart_item.quantity*cart_item.pizza[size].price;
