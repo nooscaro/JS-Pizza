@@ -59,6 +59,35 @@ $(function () {
         window.location = "/";
     });
 
+
+    $('#nameInput').change(function () {
+
+       var input =$('#nameInput').val();
+        var Reg61 = new RegExp("^.*[^A-zА-яЁё].*$[^\\s]*");
+        if(input.length>1 ){
+
+           if(Reg61.test(input))
+           {
+               $('#nameInput').removeClass("isValid");
+               $('#nameInput').addClass("isInvalid");
+               $('.name-group').addClass("isInvalid");
+               $('.name-group').removeClass("isValid");
+           }
+           else
+           {
+               $('#nameInput').removeClass("isInvalid");
+               $('#nameInput').addClass('isValid');
+               $('.name-group').addClass("isValid");
+               $('.name-group').removeClass("isInvalid");
+           }
+       } else {
+            $('#nameInput').removeClass("isValid");
+            $('#nameInput').addClass('isInvalid');
+            $('.name-group').addClass("isInvalid");
+            $('.name-group').removeClass("isValid");
+       }
+    });
+
 });
 
 function initialize() {
@@ -169,7 +198,7 @@ function initialize() {
 
     $('#address').change(function () {
         var adr = (String)($('#address').val());
-        alert(adr);
+
         geocodeAddress(adr, function (err, coord) {
             if (err)
                 alert("Couldn't find the address");

@@ -365,7 +365,7 @@ hr.orangeDivider {
   input {
     border-radius: 3px;
     padding: 1%;
-    border: solid 0.5px lightgray;
+    border: solid 1px lightgray;
     width: 90%;
   }
   .bs-callout {
@@ -398,7 +398,23 @@ hr.orangeDivider {
     //margin-bottom: 20%;
   }
 
-  //.orderAddress{
-  //  display: inline;
-  //}
+  .isInvalid {
+    border-color: #b11215;
+    input {
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    }
+    label {
+      color: #b11215;
+    }
+  }
+
+  .isValid {
+    border-color: #397343;
+    input {
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #65cb76;
+    }
+    label {
+      color: #397343;
+    }
+  }
 }
