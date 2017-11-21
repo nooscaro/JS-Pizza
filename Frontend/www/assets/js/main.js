@@ -246,6 +246,7 @@ function initialize() {
                 callback(null, coordinates);
             } else {
                 callback(new Error("Can	not	find	the	adress"));
+
             }
         });
     }
@@ -260,6 +261,7 @@ function initialize() {
                 callback(null, adress);
             } else {
                 callback(new Error("Can't	find	adress"));
+
             }
         });
     }
@@ -298,14 +300,29 @@ function initialize() {
         var adr = (String)($('#address').val());
 
         geocodeAddress(adr, function (err, coord) {
-            if (err)
-                alert("Couldn't find the address");
+            if (err){
+                $('#address').removeClass("isValid");
+                $('#address').addClass("isInvalid");
+                $('.address-group').removeClass("isValid");
+                $('.address-group').addClass("isInvalid");
+            }
+                // alert("Couldn't find the address");
             else {
                 calculateRoute(point, coord, function (err, duration) {
-                    if (err)
+                    if (err){
                         console.log(err);
+                        $('#address').removeClass("isValid");
+                        $('#address').addClass("isInvalid");
+                        $('.address-group').removeClass("isValid");
+                        $('.address-group').addClass("isInvalid");
+                    }
+
                     else {
                         console.log(duration);
+                        $('#address').removeClass("isInvalid");
+                        $('#address').addClass("isValid");
+                        $('.address-group').removeClass("isInvalid");
+                        $('.address-group').addClass("isValid");
                         $('.timeAprox').text(duration.duration);
                         $('.summaryAddress').text(adr);
                         homeMarker.setMap(null);
@@ -314,6 +331,7 @@ function initialize() {
                             map: map,
                             icon: "assets/images/home-icon.png"
                         });
+
                     }
                 });
             }
