@@ -7,7 +7,7 @@ $(function () {
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = [];
-
+    var Pizza_Cart = require('./pizza/PizzaCart');
     var API = require('./API.js');
     API.getPizzaList(function (err, list) {
         if (err)
@@ -93,6 +93,35 @@ $(function () {
        }
     });
 
+    $('.orderNextButton').click(function () {
+       if(!validName($('#nameInput').val())||!validPhoneNumber($('#phoneInput').val())){
+           alert("something is wrong")
+       }
+
+        var order_info = {
+            name: $('#nameInput').val(),
+            phone: $('#phoneInput').val(),
+            address: $('#address').val(),
+            cart: PizzaCart.getPizzaInCart(),
+            sum: calculateTotal(PizzaCart.getPizzaInCart()),
+        };
+        console.log(order_info);
+        API.createOrder(order_info, function (err) {
+            if(err) {
+                alert("Unable to make an order");
+            } else
+                alert("Success");
+        });
+    });
+
+
+    function calculateTotal(list) {
+        var total = 0;
+        list.forEach(function (t) {
+            total+=t.pizza[t.size].price*t.quantity;
+        });
+        return total;
+    }
 
     function validPhoneNumber(str) {
         if(str==null || str.length<4)
