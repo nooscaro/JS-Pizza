@@ -63,31 +63,61 @@ $(function () {
     $('#nameInput').change(function () {
 
        var input =$('#nameInput').val();
-        var Reg61 = new RegExp("^.*[^A-zА-яЁё].*$[^\\s]*");
-        if(input.length>1 ){
 
-           if(Reg61.test(input))
-           {
-               $('#nameInput').removeClass("isValid");
-               $('#nameInput').addClass("isInvalid");
-               $('.name-group').addClass("isInvalid");
-               $('.name-group').removeClass("isValid");
-           }
-           else
-           {
-               $('#nameInput').removeClass("isInvalid");
-               $('#nameInput').addClass('isValid');
-               $('.name-group').addClass("isValid");
-               $('.name-group').removeClass("isInvalid");
-           }
-       } else {
+        if(validName(input)) {
+                    $('#nameInput').removeClass("isInvalid");
+                    $('#nameInput').addClass('isValid');
+                    $('.name-group').addClass("isValid");
+                    $('.name-group').removeClass("isInvalid");
+        } else {
             $('#nameInput').removeClass("isValid");
-            $('#nameInput').addClass('isInvalid');
+            $('#nameInput').addClass("isInvalid");
             $('.name-group').addClass("isInvalid");
             $('.name-group').removeClass("isValid");
+        }
+    });
+
+    $('#phoneInput').change(function () {
+       var input = $('#phoneInput').val();
+
+       if(validPhoneNumber(input)) {
+           $('#phoneInput').removeClass("isInvalid");
+           $('#phoneInput').addClass("isValid");
+           $('.phone-group').removeClass("isInvalid");
+           $('.phone-group').addClass("isValid");
+       } else {
+           $('#phoneInput').removeClass("isValid");
+           $('#phoneInput').addClass("isInvalid");
+           $('.phone-group').removeClass("isValid");
+           $('.phone-group').addClass("isInvalid");
        }
     });
 
+
+    function validPhoneNumber(str) {
+        if(str==null || str.length<4)
+            return false;
+        if(str.charAt(0)!=0) {
+            if(str.charAt(0)!='+' || str.charAt(1)!='3' || str.charAt(2)!='8' || str.charAt(3)!='0')
+                return false;
+        }
+        return true;
+    }
+
+    function validName(str) {
+        if(str===null ||str.length<2 )
+            return false;
+        var lowerCase = str.toLowerCase();
+        for(var i=0; i<str.length; i++) {
+            if(!isLetterOrSpace(lowerCase.charAt(i)))
+                return false;
+        }
+        return true;
+    }
+
+    function isLetterOrSpace(ch) {
+        return (ch>='a' && ch<='z') || (ch>='а' &&  ch<='я') || ch===' ' || ch==='ё' || ch==='є' || ch==='і';
+    }
 });
 
 function initialize() {
