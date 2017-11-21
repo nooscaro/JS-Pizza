@@ -86,6 +86,14 @@ function initialiseCart() {
     updateCart();
 }
 
+function cartSummary() {
+    var res = "";
+    Cart.forEach(function (t) {
+       res+='\t'+t.pizza.title+"["+t.size+"]: "+t.quantity+'\n';
+    });
+    return res;
+}
+
 function getPizzaInCart() {
     //Повертає піци які зберігаються в кошику
     return Cart;
@@ -144,5 +152,5 @@ exports.addToCart = addToCart;
 
 exports.getPizzaInCart = getPizzaInCart;
 exports.initialiseCart = initialiseCart;
-
+exports.cartSummary = cartSummary;
 exports.PizzaSize = PizzaSize;

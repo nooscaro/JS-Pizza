@@ -9,6 +9,19 @@ $(function () {
     var Pizza_List = [];
     var Pizza_Cart = require('./pizza/PizzaCart');
     var API = require('./API.js');
+
+
+    var crypto	=	require('crypto');
+    function	sha1(string)	{
+        var sha1	=	crypto.createHash('sha1');
+        sha1.update(string);
+        return	sha1.digest('base64');
+    }
+
+    function	base64(str)	 {
+        return	new	Buffer(str).toString('base64');
+    }
+
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
@@ -62,13 +75,13 @@ $(function () {
 
     $('#nameInput').change(function () {
 
-       var input =$('#nameInput').val();
+        var input = $('#nameInput').val();
 
-        if(validName(input)) {
-                    $('#nameInput').removeClass("isInvalid");
-                    $('#nameInput').addClass('isValid');
-                    $('.name-group').addClass("isValid");
-                    $('.name-group').removeClass("isInvalid");
+        if (validName(input)) {
+            $('#nameInput').removeClass("isInvalid");
+            $('#nameInput').addClass('isValid');
+            $('.name-group').addClass("isValid");
+            $('.name-group').removeClass("isInvalid");
         } else {
             $('#nameInput').removeClass("isValid");
             $('#nameInput').addClass("isInvalid");
@@ -78,39 +91,59 @@ $(function () {
     });
 
     $('#phoneInput').change(function () {
-       var input = $('#phoneInput').val();
+        var input = $('#phoneInput').val();
 
-       if(validPhoneNumber(input)) {
-           $('#phoneInput').removeClass("isInvalid");
-           $('#phoneInput').addClass("isValid");
-           $('.phone-group').removeClass("isInvalid");
-           $('.phone-group').addClass("isValid");
-       } else {
-           $('#phoneInput').removeClass("isValid");
-           $('#phoneInput').addClass("isInvalid");
-           $('.phone-group').removeClass("isValid");
-           $('.phone-group').addClass("isInvalid");
-       }
+        if (validPhoneNumber(input)) {
+            $('#phoneInput').removeClass("isInvalid");
+            $('#phoneInput').addClass("isValid");
+            $('.phone-group').removeClass("isInvalid");
+            $('.phone-group').addClass("isValid");
+        } else {
+            $('#phoneInput').removeClass("isValid");
+            $('#phoneInput').addClass("isInvalid");
+            $('.phone-group').removeClass("isValid");
+            $('.phone-group').addClass("isInvalid");
+        }
     });
 
     $('.orderNextButton').click(function () {
-       if(!validName($('#nameInput').val())||!validPhoneNumber($('#phoneInput').val())){
-           alert("something is wrong")
-       }
-
+        if (!validName($('#nameInput').val()) || !validPhoneNumber($('#phoneInput').val())) {
+            alert("something is wrong")
+        }
+        var PUBLIC = "i34666374942";
+        var PRIVATE = "NK5ddcmkg8cO06YpWGBMxgEvNiGYSQXXcaggZq8A";
         var order_info = {
             name: $('#nameInput').val(),
             phone: $('#phoneInput').val(),
             address: $('#address').val(),
-            cart: PizzaCart.getPizzaInCart(),
+            cart: PizzaCart.cartSummary(),
             sum: calculateTotal(PizzaCart.getPizzaInCart()),
         };
-        console.log(order_info);
-        API.createOrder(order_info, function (err) {
-            if(err) {
-                alert("Unable to make an order");
-            } else
-                alert("Success");
+
+        var order = {
+            version: 3,
+            public_key: PUBLIC,
+            action: "pay",
+            amount: order_info.sum.toString(),
+            currency: "UAH",
+            description: "Опис транзакції",
+            order_id: Math.random(),
+            sandbox: 1
+        };
+        var data = base64(JSON.stringify(order));
+        var signature =sha1(PRIVATE+data+PRIVATE);
+        LiqPayCheckout.init({
+            data: data,
+            signature: signature,
+            embedTo: "#liqpay",
+            mode: "popup"	//	embed	||	popup
+        }).on("liqpay.callback", function (data) {
+            console.log(data.status);
+            console.log(data);
+        }).on("liqpay.ready", function (data) {
+//	ready
+        }).on("liqpay.close", function (data) {
+//	close
         });
     });
 
@@ -118,34 +151,34 @@ $(function () {
     function calculateTotal(list) {
         var total = 0;
         list.forEach(function (t) {
-            total+=t.pizza[t.size].price*t.quantity;
+            total += t.pizza[t.size].price * t.quantity;
         });
         return total;
     }
 
     function validPhoneNumber(str) {
-        if(str==null || str.length<4)
+        if (str == null || str.length < 4)
             return false;
-        if(str.charAt(0)!=0) {
-            if(str.charAt(0)!='+' || str.charAt(1)!='3' || str.charAt(2)!='8' || str.charAt(3)!='0')
+        if (str.charAt(0) != 0) {
+            if (str.charAt(0) != '+' || str.charAt(1) != '3' || str.charAt(2) != '8' || str.charAt(3) != '0')
                 return false;
         }
         return true;
     }
 
     function validName(str) {
-        if(str===null ||str.length<2 )
+        if (str === null || str.length < 2)
             return false;
         var lowerCase = str.toLowerCase();
-        for(var i=0; i<str.length; i++) {
-            if(!isLetterOrSpace(lowerCase.charAt(i)))
+        for (var i = 0; i < str.length; i++) {
+            if (!isLetterOrSpace(lowerCase.charAt(i)))
                 return false;
         }
         return true;
     }
 
     function isLetterOrSpace(ch) {
-        return (ch>='a' && ch<='z') || (ch>='а' &&  ch<='я') || ch===' ' || ch==='ё' || ch==='є' || ch==='і';
+        return (ch >= 'a' && ch <= 'z') || (ch >= 'а' && ch <= 'я') || ch === ' ' || ch === 'ё' || ch === 'є' || ch === 'і';
     }
 });
 
@@ -261,16 +294,16 @@ function initialize() {
         var adr = (String)($('#address').val());
 
         geocodeAddress(adr, function (err, coord) {
-            if (err){
+            if (err) {
                 $('#address').removeClass("isValid");
                 $('#address').addClass("isInvalid");
                 $('.address-group').removeClass("isValid");
                 $('.address-group').addClass("isInvalid");
             }
-                // alert("Couldn't find the address");
+            // alert("Couldn't find the address");
             else {
                 calculateRoute(point, coord, function (err, duration) {
-                    if (err){
+                    if (err) {
                         console.log(err);
                         $('#address').removeClass("isValid");
                         $('#address').addClass("isInvalid");

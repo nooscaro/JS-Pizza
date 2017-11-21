@@ -5,6 +5,11 @@
 <script	type="text/javascript"
            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4XXk2U58wkWu9qmCI96ZL6leduuFtgls">
 </script>
+
+<!-- піключаємо скрипт -->
+<script	src="//static.liqpay.com/libjs/checkout.js">
+</script>
+
 <div class="container leftColumn  orderPageContent">
     <p class="heading row">1. Контактні дані</p>
     <div class="row ">
@@ -49,50 +54,9 @@
         <button class="col-xs-3 col-xs-offset-9 col-sm-2 col-sm-offset-10 btn btn-primary orderNextButton">Далі</button>
     </div>
     <div class="container-fluid" id="map"></div>
-
+    <div id="liqpay"></div>
 </div>
-
-<div class="container-fluid rightColumn">
-    <div id="cart">
-        <div class="row cartItem">
-            <p class="cartItemTitle">Піцца (Мала)</p>
-            <div class="row">
-                <div class="col-xs-3 diameter">30</div>
-                <div class="col-xs-3 weight">430</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3 label">69 грн.</div>
-                <button class="col-xs-2 btn btn-danger btn-circle">
-                    <i class="glyphiceon glyphicon-minus"></i>
-                </button>
-                <div class="col-xs-1 label">3</div>
-                <button class="col-xs-2 btn btn-success btn-circle">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </button>
-                <button class="col-xs-2 btn btn-default btn-circle cancel">
-                    <i class="glyphicon glyphicon-remove"></i>
-                </button>
-                <img src="assets/images/pizza_3.jpg">
-            </div>
-        </div>
-    </div>
-
-    <div class="rightBottomBlock row">
-        <div class="row">
-            <span class="col-xs-7">Сума замовлення</span>
-            <span class="col-xs-5 heading" id="grandTotal">924 грн</span>
-        </div>
-        <!--<button class="btn btn-primary orderButton">Замовити</button>-->
-        <button class="btn btn-default backToMainPage container-fluid">Редагувати замовлення</button>
-    </div>
-    <div class="row rightUpperBlock">
-        <div class="col-xs-4.col-xs-1.col-xs-7">
-            <span class="heading">Замовлення</span>
-            <span class="label quantity" id="numItemsInTheCart">3</span>
-            <button id="clearYourOrder">Очистити замовлення</button>
-        </div>
-    </div>
-</div>
+<%include common/cart.ejs%>
 
 
 <% include common/footer.ejs %>

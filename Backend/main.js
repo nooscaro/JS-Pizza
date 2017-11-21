@@ -21,7 +21,7 @@ function configureEndpoints(app) {
 
     //Сторінка замовлення
     app.get('/order.html', pages.orderPage);
-
+    app.get('/payment.html', pages.paymentPage);
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/www')));
 }
