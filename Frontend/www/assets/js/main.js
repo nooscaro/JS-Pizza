@@ -124,9 +124,16 @@ $(function () {
     $('.orderButton').click(function () {
         window.location = "order.html";
         $('#cart').find('.plus').hide();
+        $('.orderButton').addClass("orderPageContent");
+        $('.backToMainPage').addClass("orderPageContent");
+        $('.plus').html("");
+        $('.minus').html("");
+        $('.cancel').html("");
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
+        $('.backToMainPage').removeClass("orderPageContent");
+
     });
 
 
@@ -544,6 +551,14 @@ function updateCart() {
 
 
 }
+
+exports.cartForOrder = function () {
+  $cart.html("");
+  Cart.forEach(function (pizza) {
+      var html = Templates.PizzaCart_OneItem_Order(pizza);
+      $cart.append(html);
+  })
+};
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;

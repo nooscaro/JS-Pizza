@@ -56,9 +56,16 @@ $(function () {
     $('.orderButton').click(function () {
         window.location = "order.html";
         $('#cart').find('.plus').hide();
+        $('.orderButton').addClass("orderPageContent");
+        $('.backToMainPage').addClass("orderPageContent");
+        $('.plus').html("");
+        $('.minus').html("");
+        $('.cancel').html("");
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
+        $('.backToMainPage').removeClass("orderPageContent");
+
     });
 
 
