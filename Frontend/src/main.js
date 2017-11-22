@@ -11,17 +11,6 @@ $(function () {
     var API = require('./API.js');
 
 
-    var crypto	=	require('crypto');
-    function	sha1(string)	{
-        var sha1	=	crypto.createHash('sha1');
-        sha1.update(string);
-        return	sha1.digest('base64');
-    }
-
-    function	base64(str)	 {
-        return	new	Buffer(str).toString('base64');
-    }
-
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
@@ -110,77 +99,53 @@ $(function () {
         if (!validName($('#nameInput').val()) || !validPhoneNumber($('#phoneInput').val())) {
             alert("something is wrong")
         }
-        var PUBLIC = "i34666374942";
-        var PRIVATE = "NK5ddcmkg8cO06YpWGBMxgEvNiGYSQXXcaggZq8A";
-        var order_info = {
-            name: $('#nameInput').val(),
-            phone: $('#phoneInput').val(),
-            address: $('#address').val(),
-            cart: PizzaCart.cartSummary(),
-            sum: calculateTotal(PizzaCart.getPizzaInCart()),
-        };
-
-        var order = {
-            version: 3,
-            public_key: PUBLIC,
-            action: "pay",
-            amount: order_info.sum.toString(),
-            currency: "UAH",
-            description: "Опис транзакції",
-            order_id: Math.random(),
-            sandbox: 1
-        };
-        var data = base64(JSON.stringify(order));
-        var signature =sha1(PRIVATE+data+PRIVATE);
-        LiqPayCheckout.init({
-            data: data,
-            signature: signature,
-            embedTo: "#liqpay",
-            mode: "popup"	//	embed	||	popup
-        }).on("liqpay.callback", function (data) {
-            console.log(data.status);
-            console.log(data);
-        }).on("liqpay.ready", function (data) {
-//	ready
-        }).on("liqpay.close", function (data) {
-//	close
+        PizzaCart.formOrderInfo(function (err, data) {
+            if (err) {
+                return alert("Couldn't create order");
+            }
+            LiqPayCheckout.init({
+                data: data.data,
+                signature: data.signature,
+                embedTo: "#liqpay",
+                mode: "popup"	//	popup	||	popup
+            }).on("liqpay.callback", function (data) {
+                console.log(data.status);
+                console.log(data);
+                alert("Order status: " + data.status);
+            }).on("liqpay.ready", function (data) {
+                //	ready
+            }).on("liqpay.close", function (data) {
+                //	close
+            });
         });
     });
-
-
-    function calculateTotal(list) {
-        var total = 0;
-        list.forEach(function (t) {
-            total += t.pizza[t.size].price * t.quantity;
-        });
-        return total;
-    }
-
-    function validPhoneNumber(str) {
-        if (str == null || str.length < 4)
-            return false;
-        if (str.charAt(0) != 0) {
-            if (str.charAt(0) != '+' || str.charAt(1) != '3' || str.charAt(2) != '8' || str.charAt(3) != '0')
-                return false;
-        }
-        return true;
-    }
-
-    function validName(str) {
-        if (str === null || str.length < 2)
-            return false;
-        var lowerCase = str.toLowerCase();
-        for (var i = 0; i < str.length; i++) {
-            if (!isLetterOrSpace(lowerCase.charAt(i)))
-                return false;
-        }
-        return true;
-    }
-
-    function isLetterOrSpace(ch) {
-        return (ch >= 'a' && ch <= 'z') || (ch >= 'а' && ch <= 'я') || ch === ' ' || ch === 'ё' || ch === 'є' || ch === 'і';
-    }
 });
+
+
+function isLetterOrSpace(ch) {
+    return (ch >= 'a' && ch <= 'z') || (ch >= 'а' && ch <= 'я') || ch === ' ' || ch === 'ё' || ch === 'є' || ch === 'і';
+}
+
+function validPhoneNumber(str) {
+    if (str == null || str.length < 4)
+        return false;
+    if (str.charAt(0) != 0) {
+        if (str.charAt(0) != '+' || str.charAt(1) != '3' || str.charAt(2) != '8' || str.charAt(3) != '0')
+            return false;
+    }
+    return true;
+}
+
+function validName(str) {
+    if (str === null || str.length < 2)
+        return false;
+    var lowerCase = str.toLowerCase();
+    for (var i = 0; i < str.length; i++) {
+        if (!isLetterOrSpace(lowerCase.charAt(i)))
+            return false;
+    }
+    return true;
+}
 
 function initialize() {
 //Тут починаємо працювати з картою

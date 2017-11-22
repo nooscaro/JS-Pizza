@@ -3,6 +3,7 @@
  */
 var Templates = require('../Templates');
 var Storage = require('../Storage');
+var API = require('../API');
 //Перелік розмірів піци
 var PizzaSize = {
     Big: "big_size",
@@ -86,10 +87,33 @@ function initialiseCart() {
     updateCart();
 }
 
+function sumUp() {
+    var total = 0;
+    Cart.forEach(function (t) {
+      total+=  t.pizza[t.size].price*t.quantity;
+    });
+    return total;
+}
+
+exports.formOrderInfo = function (callback) {
+    API.createOrder({
+        name: $("#nameInput").val(),
+        phone: $("#phoneInput").val(),
+        address: $("#address").val(),
+        order: cartSummary(),
+        total: sumUp(),
+    }, function (err, result) {
+        if(err) return callback(err);
+        callback(null,  result);
+    })
+};
+
 function cartSummary() {
     var res = "";
+    var size = "";
     Cart.forEach(function (t) {
-       res+='\t'+t.pizza.title+"["+t.size+"]: "+t.quantity+'\n';
+        size = (t.size==="small_size")?"мала":"велика";
+       res+=t.pizza.title+"["+size+"]: "+t.quantity;
     });
     return res;
 }
