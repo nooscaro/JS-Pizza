@@ -1,7 +1,6 @@
 /**
  * Created by chaika on 25.01.16.
  */
-var order = false;
 
 $(function () {
     //This code will execute when the page is ready
@@ -11,12 +10,13 @@ $(function () {
     var Pizza_Cart = require('./pizza/PizzaCart');
     var API = require('./API.js');
 
+
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
         else {
             Pizza_List = list;
-            PizzaCart.initialiseCart(order);
+            PizzaCart.initialiseCart();
             PizzaMenu.initialiseMenu();
 
         }
@@ -56,13 +56,16 @@ $(function () {
     $('.orderButton').click(function () {
         window.location = "order.html";
         $('#cart').find('.plus').hide();
-        // $('.orderButton').addClass("orderPageContent");
-        // $('.backToMainPage').addClass("orderPageContent");
-        order =true;
+        $('.orderButton').addClass("orderPageContent");
+        $('.backToMainPage').addClass("orderPageContent");
+        $('.plus').html("");
+        $('.minus').html("");
+        $('.cancel').html("");
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
-        order = false;
+        $('.backToMainPage').removeClass("orderPageContent");
+
     });
 
 
