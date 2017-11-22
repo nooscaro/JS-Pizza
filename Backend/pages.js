@@ -3,15 +3,16 @@
  */
 exports.mainPage = function (req, res) {
     res.render('mainPage', {
-        pageTitle: 'Вибір Піци'
-
+        pageTitle: 'Вибір Піци',
+        order: false
     });
 };
 
 exports.orderPage = function (req, res) {
     //TODO: implement
     res.render('orderPage', {
-        pageTitle: 'Замовлення'
+        pageTitle: 'Замовлення',
+        order: true
     });
 };
 
