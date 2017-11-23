@@ -1,7 +1,7 @@
 /**
  * Created by chaika on 25.01.16.
  */
-
+var ORDERPAGE = false;
 $(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
@@ -11,13 +11,22 @@ $(function () {
     var API = require('./API.js');
 
 
+    function renderCart() {
+        $('#cart').find('.plus').hide();
+        $('#cart').find('.minus').hide();
+        $('#cart').find('.cancel').hide();
+    }
+
+
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
         else {
             Pizza_List = list;
-            PizzaCart.initialiseCart();
             PizzaMenu.initialiseMenu();
+            if(!ORDERPAGE)
+            return PizzaCart.initialiseCart();
+            PizzaCart.cartForOrder();
 
         }
     });
@@ -55,17 +64,13 @@ $(function () {
     });
     $('.orderButton').click(function () {
         window.location = "order.html";
-        $('#cart').find('.plus').hide();
-        $('.orderButton').addClass("orderPageContent");
-        $('.backToMainPage').addClass("orderPageContent");
-        $('.plus').html("");
-        $('.minus').html("");
-        $('.cancel').html("");
+        ORDERPAGE = true;
+        window.load(renderCart());
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
         $('.backToMainPage').removeClass("orderPageContent");
-
+        ORDERPAGE = false;
     });
 
 
@@ -236,8 +241,13 @@ function initialize() {
         'click', function (me) {
             var coordinates = me.latLng;
             geocodeLatLng(coordinates, function (err, adress) {
-                if (err)
-                    console.log(err);
+                if (err){
+                    $('#address').removeClass("isValid");
+                    $('#address').addClass("isInvalid");
+                    $('.address-group').removeClass("isValid");
+                    $('.address-group').addClass("isInvalid");
+                }
+                    // console.log(err);
                 else {
                     homeMarker.setMap(null);
                     // console.log(adress);
@@ -252,8 +262,12 @@ function initialize() {
                         if (err)
                             console.log(err);
                         else {
-                            console.log(time.duration);
+                            // console.log(time.duration);
                             $('.timeAprox').text(time.duration);
+                            $('#address').removeClass("isInvalid");
+                            $('#address').addClass("isValid");
+                            $('.address-group').removeClass("isInvalid");
+                            $('.address-group').addClass("isValid");
                         }
                     });
                 }
@@ -306,7 +320,6 @@ function initialize() {
 }
 
 //Карта створена і показана
-
 
 //Коли сторінка завантажилась
 google.maps.event.addDomListener(window, 'load', initialize);

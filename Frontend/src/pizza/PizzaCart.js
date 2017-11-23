@@ -173,6 +173,7 @@ function updateCart() {
 
 exports.cartForOrder = function () {
   $cart.html("");
+  alert("!!!!!!!");
   Cart.forEach(function (pizza) {
       var html = Templates.PizzaCart_OneItem_Order(pizza);
       $cart.append(html);
