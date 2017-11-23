@@ -1,11 +1,7 @@
 /**
  * Created by chaika on 25.01.16.
  */
-<<<<<<< HEAD
-var ORDERPAGE = false;
-=======
 
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
 $(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
@@ -15,7 +11,6 @@ $(function () {
     var API = require('./API.js');
 
 
-<<<<<<< HEAD
     function renderCart() {
         $('#cart').find('.plus').hide();
         $('#cart').find('.minus').hide();
@@ -23,20 +18,19 @@ $(function () {
     }
 
 
-=======
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
         else {
             Pizza_List = list;
-<<<<<<< HEAD
-=======
+
             PizzaCart.initialiseCart();
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
+
+            PizzaCart.initialiseCart();
+
             PizzaMenu.initialiseMenu();
-            if(!ORDERPAGE)
-            return PizzaCart.initialiseCart();
+            if (!ORDERPAGE)
+                return PizzaCart.initialiseCart();
             PizzaCart.cartForOrder();
 
         }
@@ -75,26 +69,20 @@ $(function () {
     });
     $('.orderButton').click(function () {
         window.location = "order.html";
-<<<<<<< HEAD
-        ORDERPAGE = true;
+
         window.load(renderCart());
-=======
+
         $('#cart').find('.plus').hide();
         $('.orderButton').addClass("orderPageContent");
         $('.backToMainPage').addClass("orderPageContent");
         $('.plus').html("");
         $('.minus').html("");
         $('.cancel').html("");
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
+
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
         $('.backToMainPage').removeClass("orderPageContent");
-<<<<<<< HEAD
-        ORDERPAGE = false;
-=======
-
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
     });
 
 
@@ -265,13 +253,13 @@ function initialize() {
         'click', function (me) {
             var coordinates = me.latLng;
             geocodeLatLng(coordinates, function (err, adress) {
-                if (err){
+                if (err) {
                     $('#address').removeClass("isValid");
                     $('#address').addClass("isInvalid");
                     $('.address-group').removeClass("isValid");
                     $('.address-group').addClass("isInvalid");
                 }
-                    // console.log(err);
+                // console.log(err);
                 else {
                     homeMarker.setMap(null);
                     // console.log(adress);

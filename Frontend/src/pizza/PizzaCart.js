@@ -138,7 +138,7 @@ function updateCart() {
         // total+=cart_item.quantity*cart_item.pizza[size].price;
         $node.find('.minus').click(function () {
             if (cart_item.quantity > 1) {
-                total-=cart_item.pizza[cart_item.size].price;
+                total -= cart_item.pizza[cart_item.size].price;
                 cart_item.quantity -= 1;
             }
             else
@@ -153,7 +153,7 @@ function updateCart() {
         $node.find(".plus").click(function () {
             //Збільшуємо кількість замовлених піц
             cart_item.quantity += 1;
-            total+=cart_item.pizza[cart_item.size].price;
+            total += cart_item.pizza[cart_item.size].price;
             //Оновлюємо відображення
             updateCart();
         });
@@ -162,26 +162,11 @@ function updateCart() {
     }
 
     Cart.forEach(showOnePizzaInCart);
-     $grandTotal.text(total+" грн.");
-     $numPizzas.text(Cart.length);
+    $grandTotal.text(total + " грн.");
+    $numPizzas.text(Cart.length);
 
-     Storage.write("cart", Cart);
-     Storage.write("total", total);
-
-
+    Storage.write("cart", Cart);
 }
-
-exports.cartForOrder = function () {
-  $cart.html("");
-<<<<<<< HEAD
-  alert("!!!!!!!");
-=======
->>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
-  Cart.forEach(function (pizza) {
-      var html = Templates.PizzaCart_OneItem_Order(pizza);
-      $cart.append(html);
-  })
-};
 
 exports.removeFromCart = removeFromCart;
 exports.addToCart = addToCart;
