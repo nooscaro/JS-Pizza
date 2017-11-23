@@ -173,7 +173,10 @@ function updateCart() {
 
 exports.cartForOrder = function () {
   $cart.html("");
+<<<<<<< HEAD
   alert("!!!!!!!");
+=======
+>>>>>>> parent of 70dec69... tried to fix the buttons in the cart for orderpage
   Cart.forEach(function (pizza) {
       var html = Templates.PizzaCart_OneItem_Order(pizza);
       $cart.append(html);
