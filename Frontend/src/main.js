@@ -1,7 +1,8 @@
 /**
  * Created by chaika on 25.01.16.
  */
-
+var ORDERPAGE_FLAG = false;
+localStorage.setItem("flag",false);
 $(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
@@ -11,27 +12,16 @@ $(function () {
     var API = require('./API.js');
 
 
-    function renderCart() {
-        $('#cart').find('.plus').hide();
-        $('#cart').find('.minus').hide();
-        $('#cart').find('.cancel').hide();
-    }
-
-
     API.getPizzaList(function (err, list) {
         if (err)
             alert(err);
         else {
             Pizza_List = list;
-
-            PizzaCart.initialiseCart();
-
-            PizzaCart.initialiseCart();
-
+            ORDERPAGE_FLAG = localStorage.getItem("flag");
+            // alert(ORDERPAGE_FLAG);
+            PizzaCart.initialiseCart(ORDERPAGE_FLAG);
             PizzaMenu.initialiseMenu();
-            if (!ORDERPAGE)
-                return PizzaCart.initialiseCart();
-            PizzaCart.cartForOrder();
+
 
         }
     });
@@ -70,19 +60,21 @@ $(function () {
     $('.orderButton').click(function () {
         window.location = "order.html";
 
-        window.load(renderCart());
+       localStorage.setItem("flag",true);
 
-        $('#cart').find('.plus').hide();
-        $('.orderButton').addClass("orderPageContent");
-        $('.backToMainPage').addClass("orderPageContent");
-        $('.plus').html("");
-        $('.minus').html("");
-        $('.cancel').html("");
+        // $('#cart').find('.plus').hide();
+        // $('.orderButton').addClass("orderPageContent");
+        // $('.backToMainPage').addClass("orderPageContent");
+        // $('.plus').html("");
+        // $('.minus').html("");
+        // $('.cancel').html("");
 
     });
     $('.backToMainPage').click(function () {
         window.location = "/";
         $('.backToMainPage').removeClass("orderPageContent");
+        ORDERPAGE_FLAG = false;
+        localStorage.setItem("flag",false);
     });
 
 
@@ -151,7 +143,7 @@ function isLetterOrSpace(ch) {
 }
 
 function validPhoneNumber(str) {
-    if (str == null || str.length < 4)
+    if (str == null || str.length <10 || str.length>14)
         return false;
     if (str.charAt(0) != 0) {
         if (str.charAt(0) != '+' || str.charAt(1) != '3' || str.charAt(2) != '8' || str.charAt(3) != '0')
