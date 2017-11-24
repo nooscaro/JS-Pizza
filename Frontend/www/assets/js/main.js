@@ -69,8 +69,7 @@ exports.PizzaCart_OneItem_Order = ejs.compile("\r\n\r\n<div class=\"row cartItem
 /**
  * Created by chaika on 25.01.16.
  */
-var ORDERPAGE_FLAG = false;
-localStorage.setItem("flag",false);
+
 $(function () {
     //This code will execute when the page is ready
     var PizzaMenu = require('./pizza/PizzaMenu');
@@ -85,9 +84,8 @@ $(function () {
             alert(err);
         else {
             Pizza_List = list;
-            ORDERPAGE_FLAG = localStorage.getItem("flag");
-            // alert(ORDERPAGE_FLAG);
-            PizzaCart.initialiseCart(ORDERPAGE_FLAG);
+
+            PizzaCart.initialiseCart();
             PizzaMenu.initialiseMenu();
 
 
@@ -139,10 +137,11 @@ $(function () {
 
     });
     $('.backToMainPage').click(function () {
+
         window.location = "/";
         $('.backToMainPage').removeClass("orderPageContent");
-        ORDERPAGE_FLAG = false;
-        localStorage.setItem("flag",false);
+
+
     });
 
 
@@ -419,7 +418,7 @@ var $clearCart = $('#clearYourOrder');
 $clearCart.click(function () {
     Cart = [];
     total=0;
-    updateCart(false);
+    updateCart();
 
 });
 //Кількість піц у кошику
@@ -450,7 +449,7 @@ function addToCart(pizza, size) {
     }
     //Оновити вміст кошика на сторінці
     total+=newItem.pizza[size].price;
-    updateCart(true);
+    updateCart();
 }
 
 function removeFromCart(cart_item) {
@@ -468,7 +467,7 @@ function removeFromCart(cart_item) {
     Cart.forEach(checkAndRemoveOneItem);
 
     //Після видалення оновити відображення
-    updateCart(false);
+    updateCart();
 }
 
 function initialiseCart(flag) {
@@ -482,7 +481,7 @@ function initialiseCart(flag) {
         total = sum;
     }
 
-    updateCart(flag);
+    updateCart();
 }
 
 function sumUp() {
@@ -521,7 +520,7 @@ function getPizzaInCart() {
     return Cart;
 }
 
-function updateCart(flag) {
+function updateCart() {
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
@@ -531,9 +530,8 @@ function updateCart(flag) {
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
-
         var $node = $(html_code);
-        if(!flag) {
+        if(document.location.href!=="http://localhost:1313/order.html") {
             // total+=cart_item.quantity*cart_item.pizza[size].price;
             $node.find('.minus').click(function () {
                 if (cart_item.quantity > 1) {
@@ -542,7 +540,7 @@ function updateCart(flag) {
                 }
                 else
                     removeFromCart(cart_item);
-                updateCart(false);
+                updateCart();
             });
 
             $node.find('.cancel').click(function () {
@@ -554,7 +552,7 @@ function updateCart(flag) {
                 cart_item.quantity += 1;
                 total += cart_item.pizza[cart_item.size].price;
                 //Оновлюємо відображення
-                updateCart(false);
+                updateCart();
             });
         } else {
             $node.find('.plus').hide();
