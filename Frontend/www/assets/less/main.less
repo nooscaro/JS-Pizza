@@ -3,7 +3,7 @@
 @headerRowHeight: 50px;
 @discountLabelHeight: 180px;
 @quantCircleSize: 20px;
-@rightUpperBlockHeight: 100px;
+@rightUpperBlockHeight: 75px;
 @rightBottomBlockHeight: 150px;
 @labelOffset: 150px;
 
@@ -107,13 +107,14 @@ hr.orangeDivider {
   background-color: #f7f7f7;
   position: fixed;
   right: 0;
-  top: 0;
+  top: @rightUpperBlockHeight/3;
   width: @rightColumnWidth;
   height: 100%;
   box-shadow: -5px 0 5px -2px gray;
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: @rightBottomBlockHeight;
+  //padding-top: @rightUpperBlockHeight/2;
 }
 
 .rightUpperBlock {
@@ -123,7 +124,7 @@ hr.orangeDivider {
   top: 0;
   width: 100%;
   //padding-top: 3%;
-  line-height: 500%;
+  line-height: 50%;
   //box-shadow: 0 5px 5px -5px gray;
 
 }
@@ -148,7 +149,8 @@ hr.orangeDivider {
   border: none;
   background: none;
   font-size: 9pt;
-  float: right;
+  //float: right;
+  display: inline-block;
 }
 
 .rightBottomBlock {
@@ -159,6 +161,7 @@ hr.orangeDivider {
   height: @rightBottomBlockHeight;
   max-width: @rightColumnWidth;
   background-color: white;
+  vertical-align: middle;
   //margin-top: 2%;
   //box-shadow: 0 -5px 5px -5px gray;
 }
@@ -427,8 +430,14 @@ hr.orangeDivider {
   }
 
 
-  .backToMainPage {
-    width: 100%;
-    //display: block;
-  }
+
+}
+
+.logInClearfix {
+  float: right;
+}
+
+.backToMainPage {
+  width: 100%;
+  //display: block;
 }
